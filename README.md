@@ -1,6 +1,8 @@
-# DBM Project-ISW
-Ciao membri! Questo sarà il repository in cui svilupperemo il nostro progetto.
-L'ho creato già adesso così poi non ci pensiamo più, almeno quando il prof caricherà il file dei Requisiti organizzeremo il lavoro.
-Per ora questo è tutto..
+# <p align = "center"> UniBg Notes </p>
 
-Buona serata ragazzuoli ;)
+**<p align = "center"> Università degli Studi di Bergamo</p>**
+
+<p align="center"> Bilal Drissi - 1087161 </p>
+<p align="center"> Daniele Iania - 1085982 </p>
+<p align="center"> Mattia Nicastro - 1086903 </p>
+
