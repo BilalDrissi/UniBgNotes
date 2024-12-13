@@ -185,4 +185,50 @@ public class DatabaseManager {
         return false;
     }
 
+
+    public static boolean INSERT_POST(String text, int userId) {
+        String insertPostQuery = "INSERT INTO posts (text) VALUES (?)";
+        String insertRelationQuery = "INSERT INTO user_post (idUser, idPost) VALUES (?, ?)";
+
+        try (Connection connection = connect();
+             PreparedStatement postStatement = connection.prepareStatement(insertPostQuery, Statement.RETURN_GENERATED_KEYS)) {
+
+            // Insert the post
+            postStatement.setString(1, text);
+
+
+            if (postStatement.executeUpdate() == 0) {
+                System.out.println("Inserting post failed, no rows affected.");
+                return false;
+            }
+
+            // Retrieve the generated post ID
+            try (ResultSet generatedKeys = postStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int postId = generatedKeys.getInt(1);
+
+                    // Insert into user_post relation
+                    try (PreparedStatement relationStatement = connection.prepareStatement(insertRelationQuery)) {
+                        relationStatement.setInt(1, userId);
+                        relationStatement.setInt(2, postId);
+                        relationStatement.executeUpdate();
+                    }
+
+                    System.out.println("Post inserted successfully with ID: " + postId);
+                    return true;
+                } else {
+                    System.out.println("Inserting post failed, no ID obtained.");
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error publishing post: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+
+
+
 }

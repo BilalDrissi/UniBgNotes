@@ -54,17 +54,17 @@ public class LoginPage extends VerticalLayout {
 
 
             if(DatabaseManager.validateUser(emailOrUsernameField.getValue(), passwordField.getValue())){
-                //user logged
-                UI.getCurrent().navigate("home");
+                //there was an error getting the user infos
+                if(!Utils.userLoggedIn(emailOrUsernameField.getValue())) return;
+
+                Notification.show("Login Successful", 5000, Notification.Position.MIDDLE);
 
                 //logged in the session
                 Utils.loggedIn();
 
-                //there was an error getting the user infos
-                if(!Utils.userLoggedIn(emailOrUsernameField.getValue())) return;
+                //user logged
+                UI.getCurrent().navigate("home");
 
-
-                Notification.show("Login Successful", 5000, Notification.Position.MIDDLE);
             } else {
                 Notification.show("Invalid credentials", 5000, Notification.Position.MIDDLE);
             }
