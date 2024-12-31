@@ -9,7 +9,7 @@ public class Session {
         this.logged = false;
     }
 
-    protected static Session getInstance() {
+    public static Session getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new Session();
         }
