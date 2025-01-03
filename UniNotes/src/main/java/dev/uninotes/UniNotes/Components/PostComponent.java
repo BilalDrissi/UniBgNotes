@@ -15,16 +15,16 @@ public class PostComponent extends VerticalLayout {
     private boolean commentSectionVisible = false;
     private VerticalLayout commentSection;
 
-    public PostComponent(String username, String userImage, String commentText, LocalDateTime postTime) {
+    public PostComponent(String username, String userImage, String text, LocalDateTime dateTime) {
         setPadding(true);
         setSpacing(true);
 
         getStyle()
                 .set("border-bottom", "1px solid #ccc")
-                .set("padding", "20px 0"); // Più spazio verticale attorno al post
+                .set("padding", "20px 0");
 
 
-        Image profileImage = new Image(userImage, "Profile picture");
+        Image profileImage = new Image((userImage != null ) ? userImage : "" , "Profile picture");
         profileImage.setWidth("50px");
         profileImage.setHeight("50px");
         profileImage.getStyle()
@@ -34,7 +34,7 @@ public class PostComponent extends VerticalLayout {
         Span userNameSpan = new Span(username);
         userNameSpan.getStyle().set("font-weight", "bold").set("margin-left", "10px");
 
-        Span timeSpan = new Span(postTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        Span timeSpan = new Span(dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         timeSpan.getStyle().set("color", "gray")
                 .set("font-size", "12px")
                 .set("margin-left", "auto");
@@ -45,7 +45,7 @@ public class PostComponent extends VerticalLayout {
         headerLayout.getStyle().set("gap", "10px");
 
 
-        Span commentSpan = new Span(commentText);
+        Span commentSpan = new Span(text);
         commentSpan.getStyle().set("font-size", "14px");
 
         // Link "comment"

@@ -1,5 +1,6 @@
 package dev.uninotes.UniNotes.Database;
 
+import dev.uninotes.UniNotes.Post;
 import dev.uninotes.UniNotes.User.User;
 import dev.uninotes.UniNotes.Utils.Utils;
 
@@ -9,7 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DatabaseManager {
@@ -122,6 +127,30 @@ public class DatabaseManager {
         return null;
     }
 
+
+    //used to get the username of the user which posted a post
+    public static Post.UserForPost SELECT_USER_FOR_POST(int id) {
+        String query = "SELECT id, username, image FROM users WHERE id = ?";
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            //if the user exists
+            if(resultSet.next()){
+                return new Post.UserForPost(
+                        resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("image")
+                );
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving users: " + e.getMessage());
+        }
+        return null;
+    }
+
     public static Map<String, String> SELECT_USER(String emailOrUsername) {
         String query = "SELECT * FROM users WHERE (email = ? OR username = ?)";
         try (Connection connection = connect();
@@ -187,46 +216,58 @@ public class DatabaseManager {
 
 
     public static boolean INSERT_POST(String text, int userId) {
-        String insertPostQuery = "INSERT INTO posts (text) VALUES (?)";
-        String insertRelationQuery = "INSERT INTO user_post (idUser, idPost) VALUES (?, ?)";
+        String insertPostQuery = "INSERT INTO posts (id_user, text, date) VALUES (?, ?, DATETIME('now'))";
 
         try (Connection connection = connect();
              PreparedStatement postStatement = connection.prepareStatement(insertPostQuery, Statement.RETURN_GENERATED_KEYS)) {
 
             // Insert the post
-            postStatement.setString(1, text);
-
+            postStatement.setInt(1, userId);
+            postStatement.setString(2, text);
 
             if (postStatement.executeUpdate() == 0) {
                 System.out.println("Inserting post failed, no rows affected.");
                 return false;
             }
 
-            // Retrieve the generated post ID
-            try (ResultSet generatedKeys = postStatement.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    int postId = generatedKeys.getInt(1);
-
-                    // Insert into user_post relation
-                    try (PreparedStatement relationStatement = connection.prepareStatement(insertRelationQuery)) {
-                        relationStatement.setInt(1, userId);
-                        relationStatement.setInt(2, postId);
-                        relationStatement.executeUpdate();
-                    }
-
-                    System.out.println("Post inserted successfully with ID: " + postId);
-                    return true;
-                } else {
-                    System.out.println("Inserting post failed, no ID obtained.");
-                    return false;
-                }
-            }
         } catch (SQLException e) {
             System.out.println("Error publishing post: " + e.getMessage());
         }
 
         return false;
     }
+
+
+    public static ArrayList<Post> SELECT_POSTS() {
+        //the last post has the largest id (similar to order for date)
+        String query = "SELECT * FROM posts ORDER BY id DESC";
+        ArrayList<Post> posts = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            //reads all the posts and loads them into the list
+            //expecting to add LIMIT if the number of the posts exponentially increases
+            while(resultSet.next()){
+                posts.add(new Post(
+                        LocalDateTime.parse(resultSet.getString("date"), formatter),
+                        resultSet.getString("text"),
+                        resultSet.getInt("id"),
+                        resultSet.getInt("id_user")
+                ));
+            }
+
+            return posts;
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving posts: " + e.getMessage());
+        }
+        return null;
+    }
+
 
 
 
