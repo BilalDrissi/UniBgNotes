@@ -79,5 +79,13 @@ public class Utils {
         return true;
     }
 
+    //returns the position of a char in a string
+    public static int find(String s, char c){
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == c) return i;
+        }
+        return -1;
+    }
+
 
 }

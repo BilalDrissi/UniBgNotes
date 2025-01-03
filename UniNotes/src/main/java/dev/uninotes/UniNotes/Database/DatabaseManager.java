@@ -1,5 +1,6 @@
 package dev.uninotes.UniNotes.Database;
 
+import dev.uninotes.UniNotes.Comment;
 import dev.uninotes.UniNotes.Post;
 import dev.uninotes.UniNotes.User.User;
 import dev.uninotes.UniNotes.Utils.Utils;
@@ -237,6 +238,29 @@ public class DatabaseManager {
         return false;
     }
 
+    public static boolean INSERT_COMMENT(User user, String text, int idPost) {
+        String insertPostQuery = "INSERT INTO comments (id_user, text, id_post, date) VALUES (?, ?, ?, DATETIME('now'))";
+
+        try (Connection connection = connect();
+             PreparedStatement postStatement = connection.prepareStatement(insertPostQuery, Statement.RETURN_GENERATED_KEYS)) {
+
+            // Insert the post
+            postStatement.setInt(1, user.getId());
+            postStatement.setString(2, text);
+            postStatement.setInt(3, idPost);
+
+            if (postStatement.executeUpdate() == 0) {
+                System.out.println("Inserting post failed, no rows affected.");
+                return false;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error publishing comment: " + e.getMessage());
+        }
+
+        return false;
+    }
+
 
     public static ArrayList<Post> SELECT_POSTS() {
         //the last post has the largest id (similar to order for date)
@@ -264,6 +288,37 @@ public class DatabaseManager {
 
         } catch (SQLException e) {
             System.out.println("Error retrieving posts: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public static ArrayList<Comment> SELECT_COMMENTS(int id) {
+        //comments ordered by insertion
+        String query = "SELECT posts.id_user, users.username, users.image, comments.text, comments.date FROM comments join posts on comments.id_post = posts.id join users on comments.id_user = users.id WHERE posts.id = ? ORDER BY comments.id DESC";
+        ArrayList<Comment> comments = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                comments.add(new Comment(
+                        resultSet.getString("text"),
+                        resultSet.getInt("id_user"),
+                        resultSet.getString("username"),
+                        LocalDateTime.parse(resultSet.getString("date"), formatter),
+                        resultSet.getString("image")
+                ));
+            }
+
+            return comments;
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving comments: " + e.getMessage());
         }
         return null;
     }

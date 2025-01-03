@@ -47,7 +47,9 @@ public class LoginPage extends VerticalLayout {
         Button loginButton = new Button("Login", e -> {
             System.out.println("clicked -> login");
 
-            if(!Utils.isValidEmail(emailOrUsernameField.getValue())){
+
+            //if it is a mail and is valid
+            if(Utils.find(emailOrUsernameField.getValue(), '@') >= 0 && !Utils.isValidEmail(emailOrUsernameField.getValue())){
                 Notification.show("You should enter a valid email", 5000, Notification.Position.MIDDLE);
                 return;
             }

@@ -38,18 +38,28 @@ public class NavBar extends HorizontalLayout {
             System.out.println("Clicked -> Search");
         });
 
+        // post button
+        Button postsButton = new Button(new Icon(VaadinIcon.COMMENT));
+        postsButton.addClickListener(e -> {
+            UI.getCurrent().navigate("posts");
+            System.out.println("Clicked -> Posts");
+        });
+
 
         profileButton.getStyle().set("font-size", "24px");
         addButton.getStyle().set("font-size", "24px");
         searchButton.getStyle().set("font-size", "24px");
+        postsButton.getStyle().set("font-size", "24px");
 
         profileButton.getStyle().set("width", "50px");
         profileButton.getStyle().set("height", "50px");
+        postsButton.getStyle().set("width", "50px");
+        postsButton.getStyle().set("height", "50px");
         addButton.getStyle().set("width", "50px");
         addButton.getStyle().set("height", "50px");
         searchButton.getStyle().set("width", "50px");
         searchButton.getStyle().set("height", "50px");
 
-        add(profileButton, addButton, searchButton);
+        add(profileButton, addButton, searchButton,postsButton);
     }
 }
