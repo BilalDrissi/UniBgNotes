@@ -1,4 +1,4 @@
-package dev.uninotes.UniNotes;
+package dev.uninotes.UniNotes.Pages;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -7,9 +7,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Components.NavBar;
+import dev.uninotes.UniNotes.Components.NotesComponent;
 
 @Route("search-documents")
 public class SearchDocumentsPage extends VerticalLayout {
+
+    private VerticalLayout resultsLayout; // layout dove mostreremo le note
 
     public SearchDocumentsPage() {
         add(new NavBar());
@@ -51,7 +54,7 @@ public class SearchDocumentsPage extends VerticalLayout {
         Button searchButton = new Button("Search");
         searchButton.setWidth("150px");
 
-        // Layout for inputs (arranged horizontally, two rows if necessary)
+        // Layout for inputs
         HorizontalLayout firstRow = new HorizontalLayout(courseNameField, fieldOfStudyComboBox);
         HorizontalLayout secondRow = new HorizontalLayout(yearComboBox, courseComboBox, userComboBox);
         firstRow.setWidthFull();
@@ -62,10 +65,13 @@ public class SearchDocumentsPage extends VerticalLayout {
         secondRow.setJustifyContentMode(JustifyContentMode.CENTER);
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
 
-        // Add components to the page
         add(firstRow, secondRow, searchButton);
 
-        // Add search logic (dummy example for now)
+        resultsLayout = new VerticalLayout();
+        resultsLayout.setWidth("80%");
+        add(resultsLayout);
+
+        // Aggiungi logica di ricerca (dummy example)
         searchButton.addClickListener(e -> {
             String courseName = courseNameField.getValue();
             String fieldOfStudy = fieldOfStudyComboBox.getValue();
@@ -73,13 +79,27 @@ public class SearchDocumentsPage extends VerticalLayout {
             String course = courseComboBox.getValue();
             String user = userComboBox.getValue();
 
-            // Example action
-            System.out.println("Searching for documents with the following filters:");
-            System.out.println("Course Name: " + courseName);
-            System.out.println("Field of Study: " + fieldOfStudy);
-            System.out.println("Year: " + year);
-            System.out.println("Course: " + course);
-            System.out.println("Uploaded By: " + user);
+            // Pulisco il layout per mostrare nuovi risultati
+            resultsLayout.removeAll();
+
+            // ESEMPIO: aggiungo delle Note con dati statici
+            resultsLayout.add(
+                    new NotesComponent(
+                            "username1",
+                            "24/12/2000",
+                            "Questa è una descrizione di esempio 1",
+                            "src/main/resources/static/images/profile/fotoProfilo.jpg"
+                    ),
+                    new NotesComponent(
+                            "username2",
+                            "01/01/2021",
+                            "Questa è una descrizione di esempio 2",
+                            "D:/UniBGNotes/UniBgNotes/UniNotes/src/main/images/profile/images.jpg"
+                    )
+            );
+
+            // Qui potresti aggiungere la vera logica per recuperare
+            // e mostrare i risultati in base ai filtri di ricerca.
         });
     }
 }

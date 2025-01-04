@@ -6,6 +6,8 @@ import dev.uninotes.UniNotes.User.User;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -85,6 +87,10 @@ public class Utils {
             if(s.charAt(i) == c) return i;
         }
         return -1;
+    }
+
+    public static LocalDateTime dateTimeFormatter(String dateTime){
+        return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
 

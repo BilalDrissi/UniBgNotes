@@ -63,6 +63,7 @@ public class Post {
         public UserForPost(int id, String username, String image) {
             this.username = username;
             this.id = id;
+            this.image = image;
         }
 
         private int getId() {

@@ -1,6 +1,7 @@
 package dev.uninotes.UniNotes.Database;
 
 import dev.uninotes.UniNotes.Comment;
+import dev.uninotes.UniNotes.Note;
 import dev.uninotes.UniNotes.Post;
 import dev.uninotes.UniNotes.User.User;
 import dev.uninotes.UniNotes.Utils.Utils;
@@ -15,7 +16,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DatabaseManager {
@@ -207,6 +207,9 @@ public class DatabaseManager {
 
             preparedStatement.executeUpdate();
             System.out.println("User updated successfully");
+
+            User.getInstance().update(id,username,email, name, surname, image);
+
             return true;
         } catch (SQLException e) {
             System.out.println("Error updating user: " + e.getMessage());
@@ -312,6 +315,41 @@ public class DatabaseManager {
                         resultSet.getString("username"),
                         LocalDateTime.parse(resultSet.getString("date"), formatter),
                         resultSet.getString("image")
+                ));
+            }
+
+            return comments;
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving comments: " + e.getMessage());
+        }
+        return null;
+    }
+
+
+    public static ArrayList<Note> SELECT_NOTES(String course, String field, String year, String username) {
+        //comments ordered by insertion
+
+        //TODO to end the query when the db will be defined
+        String query = "SELECT users.username,  notes.path, notes.description, notes.dateTime FROM notes join users on notes.id_user = users.id WHERE " +
+                "posts.id_user, users.username, users.image, comments.text, comments.date FROM comments join posts on comments.id_post = posts.id join users on comments.id_user = users.id WHERE posts.id = ? ORDER BY comments.id DESC";
+        ArrayList<Note> notes = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                //mainly infos for the note
+                notes.add(new Note(
+                        resultSet.getString("username"),
+                        resultSet.getString("image"),
+                        resultSet.getString("description"),
+                        resultSet.getString("dateTime")
                 ));
             }
 
