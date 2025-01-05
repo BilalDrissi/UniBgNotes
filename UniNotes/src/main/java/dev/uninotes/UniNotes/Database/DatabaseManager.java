@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DatabaseManager {
@@ -127,6 +128,26 @@ public class DatabaseManager {
         }
         return null;
     }
+
+    public static String SELECT_USERNAME_OF(int id) {
+        String query = "SELECT username FROM users WHERE id = ?";
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            //if the user exists
+            if(resultSet.next()){
+                return resultSet.getString("username");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving users: " + e.getMessage());
+        }
+        return null;
+    }
+
+
 
 
     //used to get the username of the user which posted a post
@@ -264,6 +285,75 @@ public class DatabaseManager {
         return false;
     }
 
+    public static int INSERT_NOTE(String description, int idUser, String course) {
+        String getCourseIdQuery = "SELECT id FROM courses WHERE name = ?";
+        String insertPostQuery = "INSERT INTO notes (description, id_user, id_course, dateTime, path) VALUES (?, ?, ?, DATETIME('now'), '')";
+
+        try (Connection connection = connect();
+             PreparedStatement courseStatement = connection.prepareStatement(getCourseIdQuery);
+             PreparedStatement postStatement = connection.prepareStatement(insertPostQuery, Statement.RETURN_GENERATED_KEYS)) {
+
+            courseStatement.setString(1, course);
+            ResultSet courseResult = courseStatement.executeQuery();
+
+            if (!courseResult.next()) {
+                System.out.println("Course not found: " + course);
+                return -1;
+            }
+
+            int idCourse = courseResult.getInt("id");
+
+            postStatement.setString(1, description);
+            postStatement.setInt(2, idUser);
+            postStatement.setInt(3, idCourse);
+
+            if (postStatement.executeUpdate() == 0) {
+                System.out.println("Inserting post failed, no rows affected.");
+                return -1;
+            }
+
+            try (ResultSet generatedKeys = postStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                } else {
+                    System.out.println("Failed to retrieve the generated note ID.");
+                    return -1;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error saving the note: " + e.getMessage());
+            return -1;
+        }
+    }
+
+
+    public static boolean UPDATE_NOTE_PATH(int idNote, String path) {
+        String updatePathQuery = "UPDATE notes SET path = ? WHERE id = ?";
+
+        try (Connection connection = connect();
+             PreparedStatement updateStatement = connection.prepareStatement(updatePathQuery)) {
+
+            updateStatement.setString(1, path);
+            updateStatement.setInt(2, idNote);
+
+            if (updateStatement.executeUpdate() == 0) {
+                System.out.println("Updating path failed, no rows affected.");
+                return false;
+            }
+
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Error updating the note path: " + e.getMessage());
+            return false;
+        }
+    }
+
+
+
+
+
 
     public static ArrayList<Post> SELECT_POSTS() {
         //the last post has the largest id (similar to order for date)
@@ -327,39 +417,136 @@ public class DatabaseManager {
     }
 
 
-    public static ArrayList<Note> SELECT_NOTES(String course, String field, String year, String username) {
-        //comments ordered by insertion
+    public static ArrayList<Note> SELECT_NOTES(String course, String username) {
+        String query = """
+            SELECT n.*
+            FROM notes n
+            JOIN courses c ON n.id_course = c.id
+            JOIN faculties f ON c.id_faculty = f.id
+            JOIN users u ON u.id = n.id_user
+            WHERE 1=1
+        """ +
+                (course != null && !course.isEmpty() ? " AND c.name = ?" : "") +
+                (username != null && !username.isEmpty() ? " AND u.username = ?" : "");
 
-        //TODO to end the query when the db will be defined
-        String query = "SELECT users.username,  notes.path, notes.description, notes.dateTime FROM notes join users on notes.id_user = users.id WHERE " +
-                "posts.id_user, users.username, users.image, comments.text, comments.date FROM comments join posts on comments.id_post = posts.id join users on comments.id_user = users.id WHERE posts.id = ? ORDER BY comments.id DESC";
         ArrayList<Note> notes = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         try (Connection connection = connect();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setInt(1, id);
+            //the index changes with the number of set values
+            int index = 1;
+            if (course != null && !course.isEmpty()) {
+                preparedStatement.setString(index++, course);
+            }
+            if (username != null && !username.isEmpty()) {
+                preparedStatement.setString(index++, username);
+            }
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()){
-                //mainly infos for the note
+            while (resultSet.next()) {
                 notes.add(new Note(
-                        resultSet.getString("username"),
-                        resultSet.getString("image"),
+                        resultSet.getInt("id"),
+                        resultSet.getInt("id_user"),
+                        resultSet.getInt("id_course"),
+                        resultSet.getString("path"),
                         resultSet.getString("description"),
                         resultSet.getString("dateTime")
                 ));
             }
 
-            return comments;
+        } catch (SQLException e) {
+            System.out.println("Error retrieving notes: " + e.getMessage());
+        }
+
+        return notes;
+    }
+
+
+
+
+    public static List<String> SELECT_USERNAMES() {
+
+        //returns all the usernames in users (each username should exist only once)
+        String query = "SELECT username FROM users WHERE username is not null and username <> 'admin'";
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<String> usernames = new ArrayList<String>();
+            while (resultSet.next()) {
+                usernames.add(resultSet.getString("username"));
+            }
+
+            return usernames;
 
         } catch (SQLException e) {
             System.out.println("Error retrieving comments: " + e.getMessage());
         }
         return null;
     }
+
+    public static List<String> SELECT_FACULTIES_NAME() {
+
+        //returns all the usernames in users (each username should exist only once)
+        String query = "SELECT name FROM faculties";
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            return new ArrayList<>() {{
+                while (resultSet.next()) {
+                    add(resultSet.getString("name"));
+                }
+            }};
+
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving faculties: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public static Map<String, List<String>> SELECT_COURSES_BY_FACULTY(String faculty) {
+        String query = """
+        SELECT faculties.name AS faculty, courses.name AS course 
+        FROM courses 
+        JOIN faculties ON courses.id_faculty = faculties.id
+        WHERE faculty = ?
+        ORDER BY faculties.name, courses.name
+    """;
+
+        Map<String, List<String>> coursesByField = new HashMap<>();
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, faculty);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String facultyName = resultSet.getString("faculty");
+                String courseName = resultSet.getString("course");
+
+                coursesByField.computeIfAbsent(facultyName, k -> new ArrayList<>()).add(courseName);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving courses by faculty: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return coursesByField;
+    }
+
+
+
 
 
 

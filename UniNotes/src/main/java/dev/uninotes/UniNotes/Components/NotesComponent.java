@@ -1,55 +1,89 @@
 package dev.uninotes.UniNotes.Components;
 
+import com.vaadin.flow.component.html.IFrame;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.server.StreamResource;
+import dev.uninotes.UniNotes.Database.DatabaseManager;
+import dev.uninotes.UniNotes.Note;
+
+import java.io.File;
 
 public class NotesComponent extends HorizontalLayout {
 
-    public NotesComponent(String username, String dataPubblicazione, String descrizione, String urlImmagineCopertina) {
+    public NotesComponent(Note note) {
 
+        String directoryPath = "src/main/resources/static" + note.getPath();
+        File directory = new File(directoryPath);
 
+        String filePath = null;
+        if (directory.exists() && directory.isDirectory()) {
+            File[] files = directory.listFiles();
+            if (files != null && files.length > 0) {
+                filePath = note.getPath() + files[0].getName();
+            } else {
+                System.out.println("Empty directory: " + directoryPath);
+            }
+        } else {
+            System.out.println("Directory not found: " + directoryPath);
+        }
 
-        Image coverImage = new Image("/images/prova.png", "Notes Image");
-       // add(image);
+        if (filePath == null) {
+            filePath = "images/default.png";
+        }
 
-        // Immagine di copertina (rettangolare)
-       // Image coverImage = new Image(urlImmagineCopertina, "Copertina");
-        coverImage.setWidth("100px");   // regola a piacere
-        coverImage.setHeight("60px");   // regola a piacere
+        boolean isImage = filePath.endsWith(".png") || filePath.endsWith(".jpg") || filePath.endsWith(".jpeg");
+        boolean isPDF = filePath.endsWith(".pdf");
 
-        // Layout per il testo (username, data, descrizione)
+        // placeholder for file preview
+        HorizontalLayout filePreviewLayout = new HorizontalLayout();
+        filePreviewLayout.setWidth("54px");
+        filePreviewLayout.setHeight("96px");
+        filePreviewLayout.setAlignItems(Alignment.CENTER);
+
+        if (isImage) {
+            Image coverImage = new Image("/" + filePath, "Notes File");
+            coverImage.setWidth("54px");
+            coverImage.setHeight("96px");
+            filePreviewLayout.add(coverImage);
+        } else if (isPDF) {
+            IFrame pdfPreview = new IFrame("/" + filePath);
+            pdfPreview.setWidth("54px");
+            pdfPreview.setHeight("96px");
+            pdfPreview.getStyle().set("border", "none");
+            filePreviewLayout.add(pdfPreview);
+        } else {
+            Image fallbackImage = new Image("/images/file-preview.png", "File Preview");
+            fallbackImage.setWidth("54px");
+            fallbackImage.setHeight("96px");
+            filePreviewLayout.add(fallbackImage);
+        }
+
         VerticalLayout textLayout = new VerticalLayout();
         textLayout.setPadding(false);
         textLayout.setSpacing(false);
 
-        // Riga per username e data
         HorizontalLayout topRow = new HorizontalLayout();
         topRow.setWidthFull();
         topRow.setJustifyContentMode(JustifyContentMode.BETWEEN);
 
-        Span usernameSpan = new Span(username);
-        // Metti in grassetto lo username
+        Span usernameSpan = new Span(DatabaseManager.SELECT_USERNAME_OF(note.getIdUser()));
         usernameSpan.getStyle().set("font-weight", "bold");
 
-        Span dataSpan = new Span(dataPubblicazione);
-        // Allineato a destra rispetto all'username
+        Span dataSpan = new Span(String.valueOf(note.getDateTime()));
+        dataSpan.getStyle().set("font-size", "12px");
+
         topRow.add(usernameSpan, dataSpan);
 
-        // Descrizione
-        Span descrizioneSpan = new Span(descrizione);
+        Span descriptionSpan = new Span(note.getDescription());
 
-        // Aggiungi i componenti al layout di testo
-        textLayout.add(topRow, descrizioneSpan);
+        textLayout.add(topRow, descriptionSpan);
 
-        // Aggiungi immagine e blocco di testo al layout principale
-        add(coverImage, textLayout);
+        add(filePreviewLayout, textLayout);
 
-        // Stile generale del layout
         setSpacing(true);
-        setWidthFull();
+        setWidth("50%");
         setAlignItems(Alignment.START);
     }
 }

@@ -5,31 +5,39 @@ import dev.uninotes.UniNotes.Utils.Utils;
 import java.time.LocalDateTime;
 
 public class Note {
-    String username;
-    String image;
-    String text;
+    int id,idUser,idPost;
+    String path, description;
     LocalDateTime dateTime;
 
-    public Note(String username, String image, String text, String dateTime) {
-        this.username = username;
-        this.image = image;
-        this.text = text;
+    public Note(int id, int idUser, int idPost, String path, String description, String dateTime) {
+        this.id = id;
+        this.idUser = idUser;
+        this.idPost = idPost;
+        this.path = path;
+        this.description = description;
         this.dateTime = Utils.dateTimeFormatter(dateTime);
     }
+
 
     public LocalDateTime getDateTime() {
         return dateTime;
     }
 
-    public String getUsername() {
-        return username;
+    public int getId() {
+        return id;
+    }
+    public int getIdUser() {
+        return idUser;
+    }
+    public int getIdPost() {
+
+        return idPost;
+    }
+    public String getPath() {
+        return path;
+    }
+    public String getDescription() {
+        return description;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public String getText() {
-        return text;
-    }
 }

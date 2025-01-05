@@ -60,7 +60,7 @@ public class PostComponent extends VerticalLayout {
 
         HorizontalLayout textAndIconLayout = new HorizontalLayout(postText, commentIcon);
         textAndIconLayout.setWidthFull();
-        textAndIconLayout.setJustifyContentMode(JustifyContentMode.BETWEEN); // Sposta l'icona a destra
+        textAndIconLayout.setJustifyContentMode(JustifyContentMode.BETWEEN);
         textAndIconLayout.setAlignItems(Alignment.CENTER);
         textAndIconLayout.getStyle().set("margin-top", "5px");
 
