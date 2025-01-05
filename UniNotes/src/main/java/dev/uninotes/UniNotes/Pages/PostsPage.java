@@ -7,8 +7,9 @@ import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Components.NavBar;
 import dev.uninotes.UniNotes.Components.PostComponent;
 import dev.uninotes.UniNotes.Components.PublishBar;
+import dev.uninotes.UniNotes.Database.DatabaseManager;
+import dev.uninotes.UniNotes.Post;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +17,11 @@ import java.util.List;
 public class PostsPage extends VerticalLayout {
 
     private VerticalLayout postsLayout;
-    private List<PostData> allPosts;
+    private List<Post> posts;
     private int loadedCount = 0;
-    private final int PAGE_SIZE = 5;
 
     public PostsPage() {
-        // Basic page setup
+
         setPadding(false);
         setSpacing(false);
         setSizeFull();
@@ -55,12 +55,12 @@ public class PostsPage extends VerticalLayout {
         postsLayout.getStyle()
                 .set("box-sizing", "border-box");
 
-        // Generate mock posts
-        allPosts = generateMockPosts();
-        loadMorePosts(); // Load initial posts
+        // load and displays the first posts
+        loadPosts();
+        displayPosts();
 
         // "Load more" button
-        Button loadMoreButton = new Button("Load more", e -> loadMorePosts());
+        Button loadMoreButton = new Button("Load more", e -> displayPosts());
         loadMoreButton.getStyle().set("margin", "20px auto");
 
         wrapper.add(postsLayout, loadMoreButton);
@@ -78,49 +78,19 @@ public class PostsPage extends VerticalLayout {
         setFlexGrow(1, wrapper);
     }
 
-    /**
-     * Loads more posts by appending the next PAGE_SIZE items, if available.
-     */
-    private void loadMorePosts() {
-        int end = Math.min(loadedCount + PAGE_SIZE, allPosts.size());
-        if (end <= loadedCount) {
-            return; // No more posts to load
-        }
+    private void displayPosts(){
+        //limits the number of the posts displayed per time
+        int limit = Math.min(loadedCount + 10, posts.size());
 
-        for (int i = loadedCount; i < end; i++) {
-            PostData data = allPosts.get(i);
-            PostComponent post = new PostComponent(data.username, data.profileImage, data.comment, data.postTime);
-            postsLayout.add(post);
+        for (int i = loadedCount; i < limit; i++) {
+            Post p = posts.get(i);
+            postsLayout.add(new PostComponent(p.getIdPost(), p.getUsernameOfPost(), p.getOwnerProfileImage(), p.getText(), p.getDateTime()));
         }
-        loadedCount = end;
+        //the next time it will load the next posts
+        loadedCount = limit;
     }
 
-    /**
-     * Generates mock posts for demonstration purposes.
-     */
-    private List<PostData> generateMockPosts() {
-        List<PostData> posts = new ArrayList<>();
-        for (int i = 1; i <= 20; i++) {
-            posts.add(new PostData("User" + i, "https://via.placeholder.com/50",
-                    "This is a sample post number " + i + ".", LocalDateTime.now().minusHours(i)));
-        }
-        return posts;
-    }
-
-    /**
-     * Internal class to represent post data.
-     */
-    private static class PostData {
-        String username;
-        String profileImage;
-        String comment;
-        LocalDateTime postTime;
-
-        public PostData(String username, String profileImage, String comment, LocalDateTime postTime) {
-            this.username = username;
-            this.profileImage = profileImage;
-            this.comment = comment;
-            this.postTime = postTime;
-        }
+    private void loadPosts(){
+        posts = DatabaseManager.SELECT_POSTS();
     }
 }

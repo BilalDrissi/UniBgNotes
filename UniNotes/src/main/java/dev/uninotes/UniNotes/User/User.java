@@ -33,6 +33,19 @@ public class User {
         this.role = role;
     }
 
+    public void update(int id, String username, String email, String name, String surname, String image) {
+        if(username != null && username != "")
+            this.username = username;
+        if(email != null && email != "")
+            this.email = email;
+        if(name != null && name != "")
+            this.name = name;
+        if(surname != null && surname != "")
+            this.surname = surname;
+        if(image != null && image != "")
+            this.image = image;
+    }
+
     public int getId() {
         return id;
     }

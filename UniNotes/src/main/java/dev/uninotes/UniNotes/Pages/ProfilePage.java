@@ -1,4 +1,4 @@
-package dev.uninotes.UniNotes;
+package dev.uninotes.UniNotes.Pages;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Image;
@@ -16,6 +16,7 @@ import dev.uninotes.UniNotes.User.User;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 @Route("profile")
 public class ProfilePage extends VerticalLayout {
@@ -29,7 +30,8 @@ public class ProfilePage extends VerticalLayout {
         Span title = new Span("Hello " + ((User.getInstance().getName() != null) ? User.getInstance().getName() : "user"));
         title.getStyle().set("font-size", "24px").set("font-weight", "bold");
 
-        Image profileImage = new Image( (User.getInstance().getImage() != null) ? User.getInstance().getImage() : "", "Profile Picture");
+        String img = (User.getInstance().getImage() != null) ? User.getInstance().getImage() : "";
+        Image profileImage = new Image( img , "Profile Picture");
         profileImage.setWidth("100px");
         profileImage.setHeight("100px");
         profileImage.getStyle()
@@ -63,9 +65,20 @@ public class ProfilePage extends VerticalLayout {
         Upload image = new Upload((fileName, mimeType) -> {
             try {
                 // Ensure the directory exists
-                File tempFile = new File("./src/main/images/profile/" + fileName);
+                String uploadPath = "src/main/resources/static/images/profile/" + User.getInstance().getId() + "/profileImage/" + fileName;
+                imagePath = "/images/profile/" + User.getInstance().getId() + "/profileImage/" + fileName;
+                File tempFile = new File(uploadPath);
                 tempFile.getParentFile().mkdirs();
-                return new FileOutputStream(tempFile);
+                FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
+
+                // Esegui `flush()` manualmente quando il file è scritto completamente
+                return new FileOutputStream(tempFile) {
+                    @Override
+                    public void close() throws IOException {
+                        fileOutputStream.flush(); // Assicura che i dati siano scritti su disco
+                        super.close();
+                    }
+                };
             } catch (Exception e) {
                 Notification.show("Error uploading file: " + e.getMessage(), 5000, Notification.Position.MIDDLE);
                 return null;
@@ -80,9 +93,7 @@ public class ProfilePage extends VerticalLayout {
         });
 
         image.addSucceededListener(event -> {
-
             if (event.getMIMEType().startsWith("image/")) {
-                String imagePath = "./src/main/images/profile/" + event.getFileName();
                 profileImage.setSrc(imagePath); // update the image in the upper part
                 Notification.show("File uploaded: " + event.getFileName(), 3000, Notification.Position.BOTTOM_CENTER);
             } else {
@@ -109,7 +120,7 @@ public class ProfilePage extends VerticalLayout {
             Notification.show("Profile updated successfully!", 3000, Notification.Position.MIDDLE);
 
             //updates the username in the title
-            title.setTitle("Hello " + username);
+            title.setText("Hello " + name);
         });
 
         add(titleLayout, nameField, surnameField, usernameField, emailField, uploadLabel, image, saveButton);
