@@ -5,16 +5,16 @@ import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import dev.uninotes.UniNotes.Comment;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.User.User;
 import dev.uninotes.UniNotes.Utils.Utils;
 
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class PostComponent extends VerticalLayout {
@@ -40,7 +40,7 @@ public class PostComponent extends VerticalLayout {
         Span userNameSpan = new Span(username);
         userNameSpan.getStyle().set("font-weight", "bold").set("margin-left", "10px");
 
-        Span timeSpan = new Span(dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        Span timeSpan = new Span(dateTime.format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yy")));
         timeSpan.getStyle().set("color", "gray")
                 .set("font-size", "12px")
                 .set("margin-left", "auto");
@@ -55,9 +55,10 @@ public class PostComponent extends VerticalLayout {
 
         Icon commentIcon = new Icon(VaadinIcon.COMMENT);
         commentIcon.getStyle()
-                .set("color", "#007BFF")
+                .set("color", "#808080")
                 .set("cursor", "pointer")
-                .set("font-size", "20px");
+                .set("font-size", "16px");
+
 
         HorizontalLayout textAndIconLayout = new HorizontalLayout(postText, commentIcon);
         textAndIconLayout.setWidthFull();
@@ -133,7 +134,7 @@ public class PostComponent extends VerticalLayout {
         Span userNameSpan = new Span(comment.getUsername());
         userNameSpan.getStyle().set("font-weight", "bold").set("margin-left", "10px");
 
-        Span timeSpan = new Span(comment.getDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        Span timeSpan = new Span(comment.getDateTime().format(DateTimeFormatter.ofPattern("HH:mm dd/MM/yy")));
         timeSpan.getStyle().set("color", "gray")
                 .set("font-size", "12px")
                 .set("margin-left", "auto");

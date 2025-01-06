@@ -4,6 +4,8 @@ import com.vaadin.flow.component.UI;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.User.User;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
@@ -95,6 +97,15 @@ public class Utils {
 
     public static String getDefaultProfileImagePath(){
         return "images/default/user.jpg";
+    }
+
+    public static String getDirectoryOfDowloads() {
+        return "downloads/";
+    }
+
+    public static Path getDownloadsFolder() {
+        String userHome = System.getProperty("user.home");
+        return Paths.get(userHome, "Downloads");
     }
 
 

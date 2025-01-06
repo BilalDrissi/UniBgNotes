@@ -1,14 +1,18 @@
 package dev.uninotes.UniNotes.Components;
 
+
 import com.vaadin.flow.component.html.IFrame;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
+import dev.uninotes.UniNotes.FileManager;
 import dev.uninotes.UniNotes.Note;
 
-import javax.xml.crypto.Data;
 import java.io.File;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -16,6 +20,11 @@ import java.util.List;
 public class NotesComponent extends HorizontalLayout {
 
     public NotesComponent(Note note) {
+
+        getStyle()
+                .set("border-bottom", "1px solid #ccc")
+                .set("padding", "20px 0");
+
 
         String directoryPath = "src/main/resources/static" + note.getPath();
         File directory = new File(directoryPath);
@@ -72,13 +81,25 @@ public class NotesComponent extends HorizontalLayout {
 
         List<String> userInfos = DatabaseManager.SELECT_USERNAME_IMAGE_OF(note.getIdUser());
 
+        Image profileImage = new Image(userInfos.get(1), "User Profile Picture");
+        profileImage.setWidth("24px");
+        profileImage.setHeight("24px");
+        profileImage.getStyle()
+                .set("border-radius", "50%")
+                .set("object-fit", "cover");
+
         Span usernameSpan = new Span(userInfos.get(0));
         usernameSpan.getStyle().set("font-weight", "bold");
+
+        HorizontalLayout userProfileLayout = new HorizontalLayout(profileImage, usernameSpan);
+        userProfileLayout.setAlignItems(Alignment.CENTER);
+        userProfileLayout.setSpacing(true);
+        userProfileLayout.getStyle().set("gap", "8px");
 
         Span courseSpan = new Span(note.getCourse());
         courseSpan.getStyle().set("font-size", "12px").set("color", "gray");
 
-        VerticalLayout userInfoLayout = new VerticalLayout(usernameSpan, courseSpan);
+        VerticalLayout userInfoLayout = new VerticalLayout(userProfileLayout, courseSpan);
         userInfoLayout.setPadding(false);
         userInfoLayout.setSpacing(false);
 
@@ -87,9 +108,28 @@ public class NotesComponent extends HorizontalLayout {
 
         topRow.add(userInfoLayout, dataSpan);
 
+        HorizontalLayout descriptionAndDownloadLayout = new HorizontalLayout();
+        descriptionAndDownloadLayout.setWidthFull();
+        descriptionAndDownloadLayout.setJustifyContentMode(JustifyContentMode.BETWEEN);
+        descriptionAndDownloadLayout.setAlignItems(Alignment.CENTER);
+
         Span descriptionSpan = new Span(note.getDescription());
 
-        textLayout.add(topRow, descriptionSpan);
+        Icon downloadIcon = new Icon(VaadinIcon.DOWNLOAD_ALT);
+        downloadIcon.getStyle()
+                .set("color", "#808080")
+                .set("cursor", "pointer")
+                .set("font-size", "16px");
+        downloadIcon.addClickListener(e -> {
+            String msg = FileManager.downloadNote(note.getId(), note.getPath());
+            Notification.show(msg, 3000, Notification.Position.MIDDLE);
+
+        });
+
+
+        descriptionAndDownloadLayout.add(descriptionSpan, downloadIcon);
+
+        textLayout.add(topRow, descriptionAndDownloadLayout);
 
         add(filePreviewLayout, textLayout);
 

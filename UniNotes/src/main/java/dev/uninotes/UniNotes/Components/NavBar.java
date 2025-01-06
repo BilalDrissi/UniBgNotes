@@ -3,63 +3,88 @@ package dev.uninotes.UniNotes.Components;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.icon.Icon;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
-import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.orderedlayout.FlexComponent;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.router.AfterNavigationEvent;
+import com.vaadin.flow.router.AfterNavigationObserver;
 
-public class NavBar extends HorizontalLayout {
+public class NavBar extends HorizontalLayout implements AfterNavigationObserver {
+
+    private Button profileButton;
+    private Button addButton;
+    private Button searchButton;
+    private Button postsButton;
 
     public NavBar() {
-        //layout
         setWidth("100%");
         setHeight("100px");
         setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         setAlignItems(FlexComponent.Alignment.CENTER);
         getStyle().set("position", "fixed").set("bottom", "0").set("left", "0").set("right", "0");
 
-        // User Button
-        Button profileButton = new Button(new Icon(VaadinIcon.USER));
-        profileButton.addClickListener(e -> {
-            UI.getCurrent().navigate("profile");
-            System.out.println("clicked -> profile");
+        profileButton = createButton(VaadinIcon.USER, "profile");
+        addButton = createButton(VaadinIcon.PLUS, "load-documents");
+        searchButton = createButton(VaadinIcon.SEARCH, "search-documents");
+        postsButton = createButton(VaadinIcon.COMMENT, "posts");
+        profileButton.getStyle()
+                .set("color", "black")
+                .set("cursor", "pointer")
+                .set("font-size", "24px");
+        addButton.getStyle()
+                .set("color", "black")
+                .set("cursor", "pointer")
+                .set("font-size", "24px");
+        searchButton
+                .getStyle()
+                .set("color", "black")
+                .set("cursor", "pointer")
+                .set("font-size", "24px");
+
+        postsButton.getStyle()
+                .set("color", "black")
+                .set("cursor", "pointer")
+                .set("font-size", "24px");
+        add(profileButton, addButton, searchButton, postsButton);
+    }
+
+    private Button createButton(VaadinIcon icon, String route) {
+        Button button = new Button(new Icon(icon));
+        button.addClickListener(e -> {
+            UI.getCurrent().navigate(route);
         });
+        button.getStyle()
+                .set("font-size", "24px")
+                .set("width", "50px")
+                .set("height", "50px");
+        return button;
+    }
 
-        // + button
-        Button addButton = new Button(new Icon(VaadinIcon.PLUS));
-        addButton.addClickListener(e -> {
-            UI.getCurrent().navigate("load-documents");
-            System.out.println("Clicked -> +");
-        });
+    private void resetButtonStyles() {
+        profileButton.getStyle().set("background-color", "");
+        addButton.getStyle().set("background-color", "");
+        searchButton.getStyle().set("background-color", "");
+        postsButton.getStyle().set("background-color", "");
+    }
 
-        // search button
-        Button searchButton = new Button(new Icon(VaadinIcon.SEARCH));
-        searchButton.addClickListener(e -> {
-            UI.getCurrent().navigate("search-documents");
-            System.out.println("Clicked -> Search");
-        });
+    private void highlightButton(Button button) {
+        button.getStyle().set("background-color", "#8080ff");
+    }
 
-        // post button
-        Button postsButton = new Button(new Icon(VaadinIcon.COMMENT));
-        postsButton.addClickListener(e -> {
-            UI.getCurrent().navigate("posts");
-            System.out.println("Clicked -> Posts");
-        });
+    @Override
+    public void afterNavigation(AfterNavigationEvent event) {
+        String activeView = UI.getCurrent().getInternals().getActiveViewLocation().getPath();
 
+        resetButtonStyles();
 
-        profileButton.getStyle().set("font-size", "24px");
-        addButton.getStyle().set("font-size", "24px");
-        searchButton.getStyle().set("font-size", "24px");
-        postsButton.getStyle().set("font-size", "24px");
-
-        profileButton.getStyle().set("width", "50px");
-        profileButton.getStyle().set("height", "50px");
-        postsButton.getStyle().set("width", "50px");
-        postsButton.getStyle().set("height", "50px");
-        addButton.getStyle().set("width", "50px");
-        addButton.getStyle().set("height", "50px");
-        searchButton.getStyle().set("width", "50px");
-        searchButton.getStyle().set("height", "50px");
-
-        add(profileButton, addButton, searchButton,postsButton);
+        if (activeView.equals("profile")) {
+            highlightButton(profileButton);
+        } else if (activeView.equals("load-documents")) {
+            highlightButton(addButton);
+        } else if (activeView.equals("search-documents")) {
+            highlightButton(searchButton);
+        } else if (activeView.equals("posts")) {
+            highlightButton(postsButton);
+        }
     }
 }

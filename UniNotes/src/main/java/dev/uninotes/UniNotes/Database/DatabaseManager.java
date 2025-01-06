@@ -6,12 +6,7 @@ import dev.uninotes.UniNotes.Post;
 import dev.uninotes.UniNotes.User.User;
 import dev.uninotes.UniNotes.Utils.Utils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -432,7 +427,7 @@ public class DatabaseManager {
     }
 
 
-    public static ArrayList<Note> SELECT_NOTES(String course, String username) {
+    public static ArrayList<Note> SELECT_NOTES(String field, String course, String username) {
         String query = """
             SELECT n.*, c.name
             FROM notes n
@@ -442,7 +437,8 @@ public class DatabaseManager {
             WHERE 1=1
         """ +
                 (course != null && !course.isEmpty() ? " AND c.name = ?" : "") +
-                (username != null && !username.isEmpty() ? " AND u.username = ?" : "");
+                (username != null && !username.isEmpty() ? " AND u.username = ?" : "") +
+                (field != null && !field.isEmpty() ? " AND f.name = ? " : "");
 
         ArrayList<Note> notes = new ArrayList<>();
 
@@ -456,6 +452,9 @@ public class DatabaseManager {
             }
             if (username != null && !username.isEmpty()) {
                 preparedStatement.setString(index++, username);
+            }
+            if (field != null && !field.isEmpty()) {
+                preparedStatement.setString(index++, field);
             }
 
             ResultSet resultSet = preparedStatement.executeQuery();

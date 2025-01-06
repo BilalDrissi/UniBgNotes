@@ -11,7 +11,6 @@ import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.Note;
 import dev.uninotes.UniNotes.SearchDocumetsManager;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -76,7 +75,7 @@ public class SearchDocumentsPage extends VerticalLayout {
             String course = courseComboBox.isVisible() ? courseComboBox.getValue() : null;
             String user = userComboBox.getValue();
             resultsLayout.removeAll();
-            loadNotes(course, user);
+            loadNotes(fieldOfStudy, course, user);
         });
 
         Button clearButton = new Button("Clear");
@@ -97,8 +96,8 @@ public class SearchDocumentsPage extends VerticalLayout {
         add(resultsLayout);
     }
 
-    private void loadNotes(String course, String username) {
-        List<Note> notes = DatabaseManager.SELECT_NOTES(course, username);
+    private void loadNotes(String field, String course, String username) {
+        List<Note> notes = DatabaseManager.SELECT_NOTES(field, course, username);
         for (Note note : notes) {
             resultsLayout.add(new NotesComponent(note));
         }
