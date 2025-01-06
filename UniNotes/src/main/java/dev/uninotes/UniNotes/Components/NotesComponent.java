@@ -8,7 +8,10 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.Note;
 
+import javax.xml.crypto.Data;
 import java.io.File;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class NotesComponent extends HorizontalLayout {
 
@@ -36,7 +39,6 @@ public class NotesComponent extends HorizontalLayout {
         boolean isImage = filePath.endsWith(".png") || filePath.endsWith(".jpg") || filePath.endsWith(".jpeg");
         boolean isPDF = filePath.endsWith(".pdf");
 
-        // placeholder for file preview
         HorizontalLayout filePreviewLayout = new HorizontalLayout();
         filePreviewLayout.setWidth("54px");
         filePreviewLayout.setHeight("96px");
@@ -68,13 +70,22 @@ public class NotesComponent extends HorizontalLayout {
         topRow.setWidthFull();
         topRow.setJustifyContentMode(JustifyContentMode.BETWEEN);
 
-        Span usernameSpan = new Span(DatabaseManager.SELECT_USERNAME_OF(note.getIdUser()));
+        List<String> userInfos = DatabaseManager.SELECT_USERNAME_IMAGE_OF(note.getIdUser());
+
+        Span usernameSpan = new Span(userInfos.get(0));
         usernameSpan.getStyle().set("font-weight", "bold");
 
-        Span dataSpan = new Span(String.valueOf(note.getDateTime()));
+        Span courseSpan = new Span(note.getCourse());
+        courseSpan.getStyle().set("font-size", "12px").set("color", "gray");
+
+        VerticalLayout userInfoLayout = new VerticalLayout(usernameSpan, courseSpan);
+        userInfoLayout.setPadding(false);
+        userInfoLayout.setSpacing(false);
+
+        Span dataSpan = new Span(note.getDateTime().format(DateTimeFormatter.ofPattern("dd/MM/yy")));
         dataSpan.getStyle().set("font-size", "12px");
 
-        topRow.add(usernameSpan, dataSpan);
+        topRow.add(userInfoLayout, dataSpan);
 
         Span descriptionSpan = new Span(note.getDescription());
 

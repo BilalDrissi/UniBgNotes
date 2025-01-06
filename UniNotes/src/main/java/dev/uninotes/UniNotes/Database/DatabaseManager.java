@@ -14,10 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DatabaseManager {
 
@@ -139,6 +136,24 @@ public class DatabaseManager {
             //if the user exists
             if(resultSet.next()){
                 return resultSet.getString("username");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving users: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public static List<String> SELECT_USERNAME_IMAGE_OF(int id) {
+        String query = "SELECT username, image FROM users WHERE id = ?";
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            //if the user exists
+            if(resultSet.next()){
+                return Arrays.asList(resultSet.getString("username"), resultSet.getString("image"));
             }
 
         } catch (SQLException e) {
@@ -419,7 +434,7 @@ public class DatabaseManager {
 
     public static ArrayList<Note> SELECT_NOTES(String course, String username) {
         String query = """
-            SELECT n.*
+            SELECT n.*, c.name
             FROM notes n
             JOIN courses c ON n.id_course = c.id
             JOIN faculties f ON c.id_faculty = f.id
@@ -452,7 +467,8 @@ public class DatabaseManager {
                         resultSet.getInt("id_course"),
                         resultSet.getString("path"),
                         resultSet.getString("description"),
-                        resultSet.getString("dateTime")
+                        resultSet.getString("dateTime"),
+                        resultSet.getString("name")
                 ));
             }
 

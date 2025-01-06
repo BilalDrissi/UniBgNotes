@@ -6,18 +6,22 @@ import java.time.LocalDateTime;
 
 public class Note {
     int id,idUser,idPost;
-    String path, description;
+    String path, description, course;
     LocalDateTime dateTime;
 
-    public Note(int id, int idUser, int idPost, String path, String description, String dateTime) {
+    public Note(int id, int idUser, int idPost, String path, String description, String dateTime, String course) {
         this.id = id;
         this.idUser = idUser;
         this.idPost = idPost;
         this.path = path;
         this.description = description;
         this.dateTime = Utils.dateTimeFormatter(dateTime);
+        this.course = course;
     }
 
+    public String getCourse() {
+        return course;
+    }
 
     public LocalDateTime getDateTime() {
         return dateTime;
