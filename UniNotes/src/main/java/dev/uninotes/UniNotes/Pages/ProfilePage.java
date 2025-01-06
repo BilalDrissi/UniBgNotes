@@ -13,6 +13,7 @@ import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Components.NavBar;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.User.User;
+import dev.uninotes.UniNotes.Utils.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,7 +31,7 @@ public class ProfilePage extends VerticalLayout {
         Span title = new Span("Hello " + ((User.getInstance().getName() != null) ? User.getInstance().getName() : "user"));
         title.getStyle().set("font-size", "24px").set("font-weight", "bold");
 
-        String img = (User.getInstance().getImage() != null) ? User.getInstance().getImage() : "";
+        String img = (User.getInstance().getImage() != null && !User.getInstance().getImage().isEmpty() ) ? User.getInstance().getImage() : Utils.getDefaultUserImagePath();
         Image profileImage = new Image( img , "Profile Picture");
         profileImage.setWidth("100px");
         profileImage.setHeight("100px");
