@@ -11,6 +11,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import dev.uninotes.UniNotes.Comment;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.User.User;
+import dev.uninotes.UniNotes.Utils.Utils;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
@@ -29,7 +30,7 @@ public class PostComponent extends VerticalLayout {
                 .set("border-bottom", "1px solid #ccc")
                 .set("padding", "20px 0");
 
-        Image profileImage = new Image((userImage != null) ? userImage : "", "Profile picture");
+        Image profileImage = new Image((userImage != null && !userImage.isEmpty()) ? userImage : Utils.getDefaultProfileImagePath(), "Profile picture");
         profileImage.setWidth("50px");
         profileImage.setHeight("50px");
         profileImage.getStyle()
@@ -122,7 +123,7 @@ public class PostComponent extends VerticalLayout {
     }
 
     private VerticalLayout createCommentComponent(Comment comment) {
-        Image profileImage = new Image(comment.getImage(), "Comment profile picture");
+        Image profileImage = new Image((comment.getImage() != null && !comment.getImage().isEmpty()) ? comment.getImage() : Utils.getDefaultProfileImagePath(), "Comment profile picture");
         profileImage.setWidth("30px");
         profileImage.setHeight("30px");
         profileImage.getStyle()

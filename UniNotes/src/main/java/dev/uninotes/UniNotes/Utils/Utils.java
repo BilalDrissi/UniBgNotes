@@ -93,5 +93,9 @@ public class Utils {
         return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
+    public static String getDefaultProfileImagePath(){
+        return "images/default/user.jpg";
+    }
+
 
 }

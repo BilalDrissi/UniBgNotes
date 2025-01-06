@@ -1,5 +1,7 @@
 package dev.uninotes.UniNotes.User;
 
+import dev.uninotes.UniNotes.Utils.Utils;
+
 public class User {
     
     private static User INSTANCE;
@@ -29,7 +31,7 @@ public class User {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.image = image;
+        this.image = (image != null && !image.isEmpty()) ? image : Utils.getDefaultProfileImagePath();
         this.role = role;
     }
 

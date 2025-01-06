@@ -64,26 +64,17 @@ public class ProfilePage extends VerticalLayout {
         Span uploadLabel = new Span("Upload profile picture:");
         Upload image = new Upload((fileName, mimeType) -> {
             try {
-                // Ensure the directory exists
                 String uploadPath = "src/main/resources/static/images/profile/" + User.getInstance().getId() + "/profileImage/" + fileName;
                 imagePath = "/images/profile/" + User.getInstance().getId() + "/profileImage/" + fileName;
                 File tempFile = new File(uploadPath);
                 tempFile.getParentFile().mkdirs();
-                FileOutputStream fileOutputStream = new FileOutputStream(tempFile);
-
-                // Esegui `flush()` manualmente quando il file è scritto completamente
-                return new FileOutputStream(tempFile) {
-                    @Override
-                    public void close() throws IOException {
-                        fileOutputStream.flush(); // Assicura che i dati siano scritti su disco
-                        super.close();
-                    }
-                };
-            } catch (Exception e) {
+                return new FileOutputStream(tempFile);
+            } catch (IOException e) {
                 Notification.show("Error uploading file: " + e.getMessage(), 5000, Notification.Position.MIDDLE);
                 return null;
             }
         });
+
 
         // can upload only 1 photo
         image.setMaxFiles(1);
@@ -94,12 +85,13 @@ public class ProfilePage extends VerticalLayout {
 
         image.addSucceededListener(event -> {
             if (event.getMIMEType().startsWith("image/")) {
-                profileImage.setSrc(imagePath); // update the image in the upper part
+                profileImage.setSrc(imagePath + "?t=" + System.currentTimeMillis());
                 Notification.show("File uploaded: " + event.getFileName(), 3000, Notification.Position.BOTTOM_CENTER);
             } else {
                 Notification.show("The uploaded file is not a valid image.", 5000, Notification.Position.MIDDLE);
             }
         });
+
 
         image.setDropAllowed(true);
         image.setWidth("300px");
