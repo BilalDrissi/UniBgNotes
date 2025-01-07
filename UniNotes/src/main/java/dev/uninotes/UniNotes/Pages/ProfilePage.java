@@ -99,6 +99,19 @@ public class ProfilePage extends VerticalLayout {
         image.setDropAllowed(true);
         image.setWidth("300px");
 
+
+        Button passwordManagerButton = new Button("Manage Password", event ->
+                getUI().ifPresent(ui -> ui.navigate("password-manager"))
+        );
+        passwordManagerButton.getStyle()
+                .set("background-color", "#FF5722")
+                .set("color", "white")
+                .set("border", "none")
+                .set("padding", "10px 20px")
+                .set("border-radius", "5px")
+                .set("cursor", "pointer");
+
+
         // Save button
         Button saveButton = new Button("Save", event -> {
             String name = nameField.getValue();
@@ -118,7 +131,7 @@ public class ProfilePage extends VerticalLayout {
             title.setText("Hello " + name);
         });
 
-        add(titleLayout, nameField, surnameField, usernameField, emailField, uploadLabel, image, saveButton);
+        add(titleLayout, nameField, surnameField, usernameField, emailField,passwordManagerButton, uploadLabel, image, saveButton);
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
         setHeightFull();

@@ -609,6 +609,51 @@ public class DatabaseManager {
     }
 
 
+    //FOR CHANGE PASSWORD > NEEDS THE OLD PASSWORD
+    public static boolean UPDATE_USER_PASSWORD(String email, String newPassword, String oldPassword) {
+
+        String query = "UPDATE users SET password = ? WHERE email = ? AND password = ?";
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, oldPassword);
+
+            int row = preparedStatement.executeUpdate();
+
+            return row > 0;
+        } catch (SQLException e) {
+            System.out.println("Error updating password: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+
+    //FOR LOST PASSWORD > NEEDS ONLY THE EMAIL
+    public static boolean UPDATE_USER_PASSWORD(String email, String newPassword) {
+
+        String query = "UPDATE users SET password = ? WHERE email = ?";
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setString(2, email);
+
+            int row = preparedStatement.executeUpdate();
+
+            return row > 0;
+        } catch (SQLException e) {
+            System.out.println("Error updating password: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+
+
+
 
 
 

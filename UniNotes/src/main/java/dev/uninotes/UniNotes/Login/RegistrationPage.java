@@ -46,7 +46,7 @@ public class RegistrationPage extends VerticalLayout {
             String confirmPassword = confirmPasswordField.getValue();
 
             // if the password does not get validated
-            if (!validatePassword(password)) {
+            if (!Utils.validatePassword(password)) {
                 Notification.show("Password must be at least 8 characters long, include a number, a special character, and an uppercase letter.", 5000, Notification.Position.MIDDLE);
                 return;
             }
@@ -74,11 +74,6 @@ public class RegistrationPage extends VerticalLayout {
         setAlignItems(FlexComponent.Alignment.CENTER);
         setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         setSizeFull();
-    }
-
-    private boolean validatePassword(String password) {
-        String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$";
-        return Pattern.matches(passwordPattern, password);
     }
 
     private void registeredAndLoggedIn(String email){
