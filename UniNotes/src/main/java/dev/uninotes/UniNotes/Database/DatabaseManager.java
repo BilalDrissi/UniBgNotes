@@ -295,12 +295,14 @@ public class DatabaseManager {
         return false;
     }
 
-    public static int INSERT_NOTE(String description, int idUser, String course) {
+    public static int INSERT_NOTE(String description, int idUser, String course, String type) {
         String getCourseIdQuery = "SELECT id FROM courses WHERE name = ?";
-        String insertPostQuery = "INSERT INTO notes (description, id_user, id_course, dateTime, path) VALUES (?, ?, ?, DATETIME('now'), '')";
+        String getTypeIdQuery = "SELECT id FROM note_types WHERE type = ?";
+        String insertPostQuery = "INSERT INTO notes (description, id_user, id_course, id_type, dateTime, path) VALUES (?, ?, ?, ?, DATETIME('now'), '')";
 
         try (Connection connection = connect();
              PreparedStatement courseStatement = connection.prepareStatement(getCourseIdQuery);
+             PreparedStatement typeStatement = connection.prepareStatement(getTypeIdQuery);
              PreparedStatement postStatement = connection.prepareStatement(insertPostQuery, Statement.RETURN_GENERATED_KEYS)) {
 
             courseStatement.setString(1, course);
@@ -313,12 +315,25 @@ public class DatabaseManager {
 
             int idCourse = courseResult.getInt("id");
 
+            typeStatement.setString(1, type);
+            ResultSet typeResult = typeStatement.executeQuery();
+
+            if (!typeResult.next()) {
+                System.out.println("Type not found: " + type);
+                return -1;
+            }
+
+            int idType = typeResult.getInt("id");
+
+
+
             postStatement.setString(1, description);
             postStatement.setInt(2, idUser);
             postStatement.setInt(3, idCourse);
+            postStatement.setInt(4, idType);
 
             if (postStatement.executeUpdate() == 0) {
-                System.out.println("Inserting post failed, no rows affected.");
+                System.out.println("Inserting note failed, no rows affected.");
                 return -1;
             }
 
@@ -427,18 +442,23 @@ public class DatabaseManager {
     }
 
 
-    public static ArrayList<Note> SELECT_NOTES(String field, String course, String username) {
+    public static ArrayList<Note> SELECT_NOTES(String field, String course, String username, String type) {
         String query = """
-            SELECT n.*, c.name
+            SELECT n.*,t.type, c.name
             FROM notes n
             JOIN courses c ON n.id_course = c.id
             JOIN faculties f ON c.id_faculty = f.id
             JOIN users u ON u.id = n.id_user
+            JOIN note_types t ON t.id = n.id_type
             WHERE 1=1
         """ +
                 (course != null && !course.isEmpty() ? " AND c.name = ?" : "") +
                 (username != null && !username.isEmpty() ? " AND u.username = ?" : "") +
-                (field != null && !field.isEmpty() ? " AND f.name = ? " : "");
+                (field != null && !field.isEmpty() ? " AND f.name = ? " : "") +
+                (type != null && !type.isEmpty() ? " AND t.type = ? " : "") +
+                """
+            ORDER BY n.dateTime DESC
+        """;
 
         ArrayList<Note> notes = new ArrayList<>();
 
@@ -456,6 +476,9 @@ public class DatabaseManager {
             if (field != null && !field.isEmpty()) {
                 preparedStatement.setString(index++, field);
             }
+            if (type != null && !type.isEmpty()) {
+                preparedStatement.setString(index++, type);
+            }
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -467,7 +490,8 @@ public class DatabaseManager {
                         resultSet.getString("path"),
                         resultSet.getString("description"),
                         resultSet.getString("dateTime"),
-                        resultSet.getString("name")
+                        resultSet.getString("name"),
+                        resultSet.getString("type")
                 ));
             }
 
@@ -559,6 +583,33 @@ public class DatabaseManager {
 
         return coursesByField;
     }
+
+    public static List<String> SELECT_NOTE_TYPES() {
+
+        //returns all the usernames in users (each username should exist only once)
+        String query = "SELECT type FROM note_types";
+
+        try (Connection connection = connect();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            return new ArrayList<>() {{
+                while (resultSet.next()) {
+                    add(resultSet.getString("type"));
+                }
+            }};
+
+
+        } catch (SQLException e) {
+            System.out.println("Error retrieving note types: " + e.getMessage());
+        }
+        return null;
+    }
+
+
+
 
 
 }

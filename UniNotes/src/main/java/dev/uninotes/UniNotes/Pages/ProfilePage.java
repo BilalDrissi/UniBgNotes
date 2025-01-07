@@ -13,6 +13,7 @@ import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Components.NavBar;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.User.User;
+import dev.uninotes.UniNotes.Utils.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,6 +25,8 @@ public class ProfilePage extends VerticalLayout {
     private String imagePath = "";
 
     public ProfilePage() {
+
+        Utils.redirectToLoginIfNotLoggedIn();
 
         add(new NavBar());
 

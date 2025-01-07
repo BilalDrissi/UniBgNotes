@@ -96,7 +96,7 @@ public class NotesComponent extends HorizontalLayout {
         userProfileLayout.setSpacing(true);
         userProfileLayout.getStyle().set("gap", "8px");
 
-        Span courseSpan = new Span(note.getCourse());
+        Span courseSpan = new Span(note.getCourse() + ", " + note.getType());
         courseSpan.getStyle().set("font-size", "12px").set("color", "gray");
 
         VerticalLayout userInfoLayout = new VerticalLayout(userProfileLayout, courseSpan);
