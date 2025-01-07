@@ -113,5 +113,10 @@ public class Utils {
         return DatabaseManager.SELECT_NOTE_TYPES();
     }
 
+    public static boolean validatePassword(String password) {
+        String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$";
+        return Pattern.matches(passwordPattern, password);
+    }
+
 
 }

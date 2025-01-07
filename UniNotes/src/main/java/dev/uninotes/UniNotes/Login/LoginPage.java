@@ -94,7 +94,7 @@ public class LoginPage extends VerticalLayout {
 
 
         // Forgot Password link
-        Anchor forgotPasswordLink = new Anchor("/forgot-password", "Did you forget the password?");
+        Anchor forgotPasswordLink = new Anchor("/password-manager", "Did you forget the password?");
         forgotPasswordLink.getStyle()
                 .set("font-size", "14px")
                 .set("color", "#007BFF")
