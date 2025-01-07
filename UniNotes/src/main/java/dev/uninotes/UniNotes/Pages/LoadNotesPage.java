@@ -151,8 +151,7 @@ public class LoadNotesPage extends VerticalLayout {
                 for (String filePath : uploadedFilePaths) {
                     Path oldFilePath = Paths.get("src/main/resources/static/temp/" + User.getInstance().getId() + "/" + filePath);
                     Path newFilePath = Paths.get(noteFolderPath + "/" + oldFilePath.getFileName());
-                    try (FileOutputStream stream = new FileOutputStream(oldFilePath.toFile())) {
-                        stream.close(); //to ensure no process is using the file
+                    try {
                         Files.move(oldFilePath, newFilePath, StandardCopyOption.REPLACE_EXISTING);
                     } catch (IOException e) {
                         Notification.show("Error moving file: " + oldFilePath.getFileName() + " - " + e.getMessage(), 5000, Notification.Position.MIDDLE);
