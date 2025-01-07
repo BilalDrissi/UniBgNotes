@@ -15,6 +15,8 @@ import dev.uninotes.UniNotes.Components.NavBar;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.SearchDocumetsManager;
 import dev.uninotes.UniNotes.User.User;
+import dev.uninotes.UniNotes.Utils.Utils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,6 +34,9 @@ public class LoadNotesPage extends VerticalLayout {
     private List<String> uploadedFilePaths = new ArrayList<>();
 
     public LoadNotesPage() {
+
+        Utils.redirectToLoginIfNotLoggedIn();
+
         add(new NavBar());
 
         // Title and user greeting
@@ -59,6 +64,13 @@ public class LoadNotesPage extends VerticalLayout {
         courseComboBox.setPlaceholder("Select course...");
         courseComboBox.setWidth("300px");
         courseComboBox.setAllowCustomValue(false);
+
+        // ComboBox for Type
+        ComboBox<String> typeComboBox = new ComboBox<>("Note Type");
+        typeComboBox.setPlaceholder("Select the notes type...");
+        typeComboBox.setItems(Utils.loadNoteTypes());
+        typeComboBox.setWidth("300px");
+        typeComboBox.setAllowCustomValue(false);
 
         fieldOfStudyComboBox.addValueChangeListener(event -> {
             String selectedField = event.getValue();
@@ -105,6 +117,7 @@ public class LoadNotesPage extends VerticalLayout {
         Button loadButton = new Button("Load", event -> {
             String description = descriptionField.getValue();
             String selectedCourse = courseComboBox.getValue();
+            String noteType = typeComboBox.getValue();
 
             if (description.isEmpty()) {
                 Notification.show("Description cannot be empty", 5000, Notification.Position.MIDDLE);
@@ -116,12 +129,17 @@ public class LoadNotesPage extends VerticalLayout {
                 return;
             }
 
+            if (noteType == null || noteType.isEmpty()) {
+                Notification.show("Please select a note type", 5000, Notification.Position.MIDDLE);
+                return;
+            }
+
             if (uploadedFilePaths.isEmpty()) {
                 Notification.show("Please upload at least one file", 5000, Notification.Position.MIDDLE);
                 return;
             }
 
-            int idNote = DatabaseManager.INSERT_NOTE(description, User.getInstance().getId(), selectedCourse);
+            int idNote = DatabaseManager.INSERT_NOTE(description, User.getInstance().getId(), selectedCourse, noteType);
             if (idNote > 0) {
                 String noteFolderPath = "src/main/resources/static/notes/" + idNote;
                 String pathToUpload = "/notes/" + idNote + "/";
@@ -151,10 +169,11 @@ public class LoadNotesPage extends VerticalLayout {
             fieldOfStudyComboBox.clear();
             notesUpload.clearFileList();
             uploadedFilePaths.clear();
+            typeComboBox.clear();
         });
 
 
-        add(titleLayout, descriptionField, fieldOfStudyComboBox, courseComboBox, uploadLabel, notesUpload, loadButton);
+        add(titleLayout, descriptionField, fieldOfStudyComboBox, courseComboBox, typeComboBox, uploadLabel, notesUpload, loadButton);
         setAlignItems(FlexComponent.Alignment.CENTER);
         setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
         setHeightFull();

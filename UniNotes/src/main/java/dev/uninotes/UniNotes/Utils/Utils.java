@@ -10,6 +10,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -61,7 +62,7 @@ public class Utils {
 
     public static void redirectToLoginIfNotLoggedIn(){
         if(!Session.getInstance().isLogged()){
-            UI.getCurrent().navigate("/login");
+            UI.getCurrent().getPage().setLocation("login");
             return;
         }
     }
@@ -106,6 +107,10 @@ public class Utils {
     public static Path getDownloadsFolder() {
         String userHome = System.getProperty("user.home");
         return Paths.get(userHome, "Downloads");
+    }
+
+    public static List<String> loadNoteTypes(){
+        return DatabaseManager.SELECT_NOTE_TYPES();
     }
 
 

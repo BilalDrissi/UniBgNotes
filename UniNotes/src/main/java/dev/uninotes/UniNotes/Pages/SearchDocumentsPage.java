@@ -10,6 +10,7 @@ import dev.uninotes.UniNotes.Components.NotesComponent;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.Note;
 import dev.uninotes.UniNotes.SearchDocumetsManager;
+import dev.uninotes.UniNotes.Utils.Utils;
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,12 @@ public class SearchDocumentsPage extends VerticalLayout {
 
     public SearchDocumentsPage() {
         add(new NavBar());
+
+        ComboBox<String> typeComboBox = new ComboBox<>("Notes Type");
+        typeComboBox.setPlaceholder("Select a note type");
+        typeComboBox.setItems(Utils.loadNoteTypes());
+        typeComboBox.setWidth("300px");
+        typeComboBox.setAllowCustomValue(false);
 
         ComboBox<String> fieldOfStudyComboBox = new ComboBox<>("Field of Study");
         fieldOfStudyComboBox.setPlaceholder("Select field of study...");
@@ -58,7 +65,7 @@ public class SearchDocumentsPage extends VerticalLayout {
             }
         });
 
-        HorizontalLayout firstRow = new HorizontalLayout(userComboBox, fieldOfStudyComboBox, courseComboBox);
+        HorizontalLayout firstRow = new HorizontalLayout(userComboBox, typeComboBox,fieldOfStudyComboBox, courseComboBox);
         firstRow.setWidthFull();
         firstRow.setJustifyContentMode(JustifyContentMode.CENTER);
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
@@ -74,8 +81,9 @@ public class SearchDocumentsPage extends VerticalLayout {
             String fieldOfStudy = fieldOfStudyComboBox.getValue();
             String course = courseComboBox.isVisible() ? courseComboBox.getValue() : null;
             String user = userComboBox.getValue();
+            String type = typeComboBox.getValue();
             resultsLayout.removeAll();
-            loadNotes(fieldOfStudy, course, user);
+            loadNotes(fieldOfStudy, course, user, type);
         });
 
         Button clearButton = new Button("Clear");
@@ -85,6 +93,7 @@ public class SearchDocumentsPage extends VerticalLayout {
             fieldOfStudyComboBox.clear();
             courseComboBox.clear();
             courseComboBox.setVisible(false);
+            typeComboBox.clear();
             resultsLayout.removeAll();
         });
 
@@ -96,8 +105,8 @@ public class SearchDocumentsPage extends VerticalLayout {
         add(resultsLayout);
     }
 
-    private void loadNotes(String field, String course, String username) {
-        List<Note> notes = DatabaseManager.SELECT_NOTES(field, course, username);
+    private void loadNotes(String field, String course, String username, String type) {
+        List<Note> notes = DatabaseManager.SELECT_NOTES(field, course, username, type);
         for (Note note : notes) {
             resultsLayout.add(new NotesComponent(note));
         }
