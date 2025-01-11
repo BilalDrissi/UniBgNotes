@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_3Ks_QLypEe-zaMWtr6BXVQ" name="DiagrammiUniBgNotes">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_3W7dYLypEe-zaMWtr6BXVQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_3PHlMLypEe-zaMWtr6BXVQ" name="UniBgNotes - Utente" visibility="package">
+    <region xmi:type="uml:Region" xmi:id="_3QAWALypEe-zaMWtr6BXVQ" name="Most">
+      <transition xmi:type="uml:Transition" xmi:id="_Lc3Q4LyqEe-zaMWtr6BXVQ" source="_-oKPULypEe-zaMWtr6BXVQ" target="_ECH9oLyqEe-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_DNVmgLyxEe-zaMWtr6BXVQ" name="Autenticazione Riuscita" guard="_qZEM4Ly2Ee-zaMWtr6BXVQ" source="_ECH9oLyqEe-zaMWtr6BXVQ" target="_qVrJYLywEe-zaMWtr6BXVQ">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_qZEM4Ly2Ee-zaMWtr6BXVQ" name="Dati Corretti">
+          <specification xmi:type="uml:InstanceValue" xmi:id="_qZEM4by2Ee-zaMWtr6BXVQ" name="Dati Corretti" instance="_qG9wQLy2Ee-zaMWtr6BXVQ"/>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_CNNw0LyyEe-zaMWtr6BXVQ" name="Autenticazione fallita" source="_ECH9oLyqEe-zaMWtr6BXVQ" target="_fJOCkLyxEe-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_Sfj98LyyEe-zaMWtr6BXVQ" name="Riprova Autenticazione" source="_fJOCkLyxEe-zaMWtr6BXVQ" target="_ECH9oLyqEe-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_reg5YLyzEe-zaMWtr6BXVQ" name="Accesso Gestione Documenti" source="_qVrJYLywEe-zaMWtr6BXVQ" target="_jLWwYLyzEe-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_y4tIILy1Ee-zaMWtr6BXVQ" name="Uscita Gestione Documenti" source="_3ErR8Ly4Ee-zaMWtr6BXVQ" target="_qVrJYLywEe-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_zM0hgLy2Ee-zaMWtr6BXVQ" name="Click Explore Button" source="_qVrJYLywEe-zaMWtr6BXVQ" target="_va_1sLy2Ee-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_XGM_oLy3Ee-zaMWtr6BXVQ" name="Click Return Home Button" source="_va_1sLy2Ee-zaMWtr6BXVQ" target="_qVrJYLywEe-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_NDrjELy9Ee-zaMWtr6BXVQ" name="Click Info Button" source="_6VOf4Ly8Ee-zaMWtr6BXVQ" target="_Zsmn4Ly8Ee-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_XjAMMLy-Ee-zaMWtr6BXVQ" name="Click Profile" source="_qVrJYLywEe-zaMWtr6BXVQ" target="_2AFd4Ly3Ee-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_rtCckLy-Ee-zaMWtr6BXVQ" name="Uscita Profilo Utente" source="_m8h68Ly-Ee-zaMWtr6BXVQ" target="_qVrJYLywEe-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_c9ZbgLzCEe-zaMWtr6BXVQ" name="Click Forum Button" source="_qVrJYLywEe-zaMWtr6BXVQ" target="_g4kX8Ly_Ee-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_sAr0gLzCEe-zaMWtr6BXVQ" name="Uscita Forum" source="_OFucoLzCEe-zaMWtr6BXVQ" target="_qVrJYLywEe-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_FgMC0LzFEe-zaMWtr6BXVQ" guard="_ObGIULzFEe-zaMWtr6BXVQ" source="_va_1sLy2Ee-zaMWtr6BXVQ" target="_XputALzDEe-zaMWtr6BXVQ">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_ObGIULzFEe-zaMWtr6BXVQ" name="Documento Trovato">
+          <specification xmi:type="uml:InstanceValue" xmi:id="_ObGIUbzFEe-zaMWtr6BXVQ" name="Documento Trovato" instance="_OB-dsLzFEe-zaMWtr6BXVQ"/>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_Q_LOoLzFEe-zaMWtr6BXVQ" name="Torna su Esplora" source="_XputALzDEe-zaMWtr6BXVQ" target="_va_1sLy2Ee-zaMWtr6BXVQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_m2zCMLzFEe-zaMWtr6BXVQ" name="LogOut" source="_qVrJYLywEe-zaMWtr6BXVQ" target="_iULLkLzFEe-zaMWtr6BXVQ"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_-oKPULypEe-zaMWtr6BXVQ" name=""/>
+      <subvertex xmi:type="uml:State" xmi:id="_ECH9oLyqEe-zaMWtr6BXVQ" name="Autenticazione">
+        <doActivity xmi:type="uml:Activity" xmi:id="_2QUhALyxEe-zaMWtr6BXVQ" name="Inserisci i dati personali"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_qVrJYLywEe-zaMWtr6BXVQ" name="Home Page"/>
+      <subvertex xmi:type="uml:State" xmi:id="_fJOCkLyxEe-zaMWtr6BXVQ" name="Errore Autenticazione">
+        <doActivity xmi:type="uml:Activity" xmi:id="_xOYpcLy3Ee-zaMWtr6BXVQ" name="Visualizza Messaggio Errore"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_jLWwYLyzEe-zaMWtr6BXVQ" name="Gestione Documenti">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_3ErR8Ly4Ee-zaMWtr6BXVQ" kind="exitPoint"/>
+        <region xmi:type="uml:Region" xmi:id="_kSxEYLyzEe-zaMWtr6BXVQ" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_bf9t0Ly6Ee-zaMWtr6BXVQ" name="Click Select Button" source="_NxOs8Ly6Ee-zaMWtr6BXVQ" target="_W9zKMLy6Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_xIyQYLy6Ee-zaMWtr6BXVQ" name="Click Upload Button" source="_W9zKMLy6Ee-zaMWtr6BXVQ" target="_RCw94Ly0Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_F7zzYLy7Ee-zaMWtr6BXVQ" name="Click Delete Button" source="_W9zKMLy6Ee-zaMWtr6BXVQ" target="_9qnA8Ly0Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_YHxNgLy7Ee-zaMWtr6BXVQ" name="Click Edit Button" source="_W9zKMLy6Ee-zaMWtr6BXVQ" target="_qopy8Ly0Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_2n9ZYLy7Ee-zaMWtr6BXVQ" source="_9qnA8Ly0Ee-zaMWtr6BXVQ" target="_NxOs8Ly6Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_-CYjkLy7Ee-zaMWtr6BXVQ" source="_qopy8Ly0Ee-zaMWtr6BXVQ" target="_NxOs8Ly6Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_EtZqELy8Ee-zaMWtr6BXVQ" name="Click Return Home Button" source="_NxOs8Ly6Ee-zaMWtr6BXVQ" target="_3ErR8Ly4Ee-zaMWtr6BXVQ"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_2poG8LyzEe-zaMWtr6BXVQ"/>
+          <subvertex xmi:type="uml:State" xmi:id="_RCw94Ly0Ee-zaMWtr6BXVQ" name="Carica Documento"/>
+          <subvertex xmi:type="uml:State" xmi:id="_qopy8Ly0Ee-zaMWtr6BXVQ" name="Modifica Documento"/>
+          <subvertex xmi:type="uml:State" xmi:id="_9qnA8Ly0Ee-zaMWtr6BXVQ" name="Elimina Documento">
+            <doActivity xmi:type="uml:Activity" xmi:id="_Tuk_sLy7Ee-zaMWtr6BXVQ" name="Conferma Cancellazione"/>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_NxOs8Ly6Ee-zaMWtr6BXVQ" name="Schermata Principale "/>
+          <subvertex xmi:type="uml:State" xmi:id="_W9zKMLy6Ee-zaMWtr6BXVQ" name="Seleziona Documento"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_va_1sLy2Ee-zaMWtr6BXVQ" name="Ricerca Appunti/Documenti">
+        <doActivity xmi:type="uml:Activity" xmi:id="_ViGIkLy3Ee-zaMWtr6BXVQ" name="Cerca Documenti o Appunti"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_2AFd4Ly3Ee-zaMWtr6BXVQ" name="Profilo Utente">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_m8h68Ly-Ee-zaMWtr6BXVQ" kind="exitPoint"/>
+        <region xmi:type="uml:Region" xmi:id="_2mGVALy3Ee-zaMWtr6BXVQ" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_iLQWkLy5Ee-zaMWtr6BXVQ" source="_cpPfgLy5Ee-zaMWtr6BXVQ" target="_eqbUILy5Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_GE5MALy9Ee-zaMWtr6BXVQ" name="Click Edit Profile Button" source="_eqbUILy5Ee-zaMWtr6BXVQ" target="_6VOf4Ly8Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_ggI7wLy9Ee-zaMWtr6BXVQ" name="Click Image" source="_6VOf4Ly8Ee-zaMWtr6BXVQ" target="_eShqILy8Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_BuMcELy-Ee-zaMWtr6BXVQ" name="Click Return Button" source="_6VOf4Ly8Ee-zaMWtr6BXVQ" target="_eqbUILy5Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_5lMfMLy-Ee-zaMWtr6BXVQ" name="Click Return Home Button" source="_eqbUILy5Ee-zaMWtr6BXVQ" target="_m8h68Ly-Ee-zaMWtr6BXVQ"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_cpPfgLy5Ee-zaMWtr6BXVQ"/>
+          <subvertex xmi:type="uml:State" xmi:id="_eqbUILy5Ee-zaMWtr6BXVQ" name="Schermata Profilo"/>
+          <subvertex xmi:type="uml:State" xmi:id="_Zsmn4Ly8Ee-zaMWtr6BXVQ" name="Modifica Dati Anagrafici"/>
+          <subvertex xmi:type="uml:State" xmi:id="_eShqILy8Ee-zaMWtr6BXVQ" name="Cambia Immagine Profilo">
+            <doActivity xmi:type="uml:Activity" xmi:id="_CQJIALy9Ee-zaMWtr6BXVQ" name="Scegli Nuova Immagine Profilo"/>
+          </subvertex>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_6VOf4Ly8Ee-zaMWtr6BXVQ" kind="choice"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_g4kX8Ly_Ee-zaMWtr6BXVQ" name="Forum">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_OFucoLzCEe-zaMWtr6BXVQ" kind="exitPoint"/>
+        <region xmi:type="uml:Region" xmi:id="_i8YCwLy_Ee-zaMWtr6BXVQ" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_7VydoLy_Ee-zaMWtr6BXVQ" name="Click Explore Button" source="_wJDfcLy_Ee-zaMWtr6BXVQ" target="_2nx2YLy_Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_J5v2ULzAEe-zaMWtr6BXVQ" name="Interazione" source="_2nx2YLy_Ee-zaMWtr6BXVQ" target="_GhbPoLzAEe-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_-WMeILzAEe-zaMWtr6BXVQ" name="Click Comment Button" source="_GhbPoLzAEe-zaMWtr6BXVQ" target="_Zb9nALzAEe-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_DqtrwLzBEe-zaMWtr6BXVQ" name="Click Like Button" source="_GhbPoLzAEe-zaMWtr6BXVQ" target="_SrCs0LzAEe-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_JZTmQLzBEe-zaMWtr6BXVQ" name="Fine Interazione" source="_SrCs0LzAEe-zaMWtr6BXVQ" target="_2nx2YLy_Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_OgdtULzBEe-zaMWtr6BXVQ" name="Finte Interazione" source="_Zb9nALzAEe-zaMWtr6BXVQ" target="_2nx2YLy_Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_aJTYsLzBEe-zaMWtr6BXVQ" name="Click Home Button" source="_2nx2YLy_Ee-zaMWtr6BXVQ" target="_wJDfcLy_Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_uTcWwLzBEe-zaMWtr6BXVQ" name="Click + Button" source="_wJDfcLy_Ee-zaMWtr6BXVQ" target="_m31g0LzBEe-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_27kDILzBEe-zaMWtr6BXVQ" name="Click Home Button" source="_m31g0LzBEe-zaMWtr6BXVQ" target="_wJDfcLy_Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_E_EaILzCEe-zaMWtr6BXVQ" source="_tLdF4Ly_Ee-zaMWtr6BXVQ" target="_wJDfcLy_Ee-zaMWtr6BXVQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_P_lhQLzCEe-zaMWtr6BXVQ" name="Click Return Home Button" source="_wJDfcLy_Ee-zaMWtr6BXVQ" target="_OFucoLzCEe-zaMWtr6BXVQ"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_tLdF4Ly_Ee-zaMWtr6BXVQ" name=""/>
+          <subvertex xmi:type="uml:State" xmi:id="_wJDfcLy_Ee-zaMWtr6BXVQ" name="Forum Home Page"/>
+          <subvertex xmi:type="uml:State" xmi:id="_2nx2YLy_Ee-zaMWtr6BXVQ" name="Visualizza Post"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_GhbPoLzAEe-zaMWtr6BXVQ" name="" kind="choice"/>
+          <subvertex xmi:type="uml:State" xmi:id="_SrCs0LzAEe-zaMWtr6BXVQ" name="Like">
+            <doActivity xmi:type="uml:Activity" xmi:id="_WWx-wLzAEe-zaMWtr6BXVQ" name="Metti Mi Piace al Post"/>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_Zb9nALzAEe-zaMWtr6BXVQ" name="Commento">
+            <doActivity xmi:type="uml:Activity" xmi:id="_dUGWMLzAEe-zaMWtr6BXVQ" name="Lascia un Commento al Post"/>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_m31g0LzBEe-zaMWtr6BXVQ" name="Pubblica Post">
+            <doActivity xmi:type="uml:Activity" xmi:id="_s_-jwLzBEe-zaMWtr6BXVQ" name="Aggiungi didascalia"/>
+          </subvertex>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_XputALzDEe-zaMWtr6BXVQ" name="Download Documento"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_iULLkLzFEe-zaMWtr6BXVQ"/>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_qG9wQLy2Ee-zaMWtr6BXVQ" name="Dati Corretti"/>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_OB-dsLzFEe-zaMWtr6BXVQ" name="Documento Trovato"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_glkr0LyxEe-zaMWtr6BXVQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gluc0LyxEe-zaMWtr6BXVQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
