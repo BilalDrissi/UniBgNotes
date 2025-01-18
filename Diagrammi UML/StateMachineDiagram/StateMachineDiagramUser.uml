@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_3Ks_QLypEe-zaMWtr6BXVQ" name="DiagrammiUniBgNotes">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_3W7dYLypEe-zaMWtr6BXVQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_3PHlMLypEe-zaMWtr6BXVQ" name="UniBgNotes - Utente" visibility="package">
+    <region xmi:type="uml:Region" xmi:id="_3QAWALypEe-zaMWtr6BXVQ">
+      <transition xmi:type="uml:Transition" xmi:id="_d9aLMNBDEe-bgtsZ8Qd5kA" guard="_GZ0IkNBEEe-bgtsZ8Qd5kA" source="_JYDtQNBCEe-bgtsZ8Qd5kA" target="_POMkwNBDEe-bgtsZ8Qd5kA">
+        <ownedRule xmi:type="uml:Constraint" xmi:id="_GZ0IkNBEEe-bgtsZ8Qd5kA" name="Already Registered">
+          <specification xmi:type="uml:InstanceValue" xmi:id="_GZ0IkdBEEe-bgtsZ8Qd5kA" name="Already Registered" instance="_GAebgNBEEe-bgtsZ8Qd5kA"/>
+        </ownedRule>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_NPQWYNBEEe-bgtsZ8Qd5kA" name="click on You do not have an account" source="_JYDtQNBCEe-bgtsZ8Qd5kA" target="_Hr1xINBEEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_HK9cMNBFEe-bgtsZ8Qd5kA" name="password not valid" source="_Hr1xINBEEe-bgtsZ8Qd5kA" target="_a4pkQNBEEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_iXpP8NBFEe-bgtsZ8Qd5kA" name="Password retry" kind="local" source="_a4pkQNBEEe-bgtsZ8Qd5kA" target="_Hr1xINBEEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_3yeZ0NBFEe-bgtsZ8Qd5kA" name="Incorrect password or username or Invalid email" source="_POMkwNBDEe-bgtsZ8Qd5kA" target="_qgu28NBFEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_IqrtENBGEe-bgtsZ8Qd5kA" name="Login retry" source="_qgu28NBFEe-bgtsZ8Qd5kA" target="_POMkwNBDEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_t25sENBGEe-bgtsZ8Qd5kA" name="Successfully Registered" source="_Hr1xINBEEe-bgtsZ8Qd5kA" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_1x6a0NBGEe-bgtsZ8Qd5kA" name="Successfully Logged In" source="_POMkwNBDEe-bgtsZ8Qd5kA" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_3l1rkNC_Ee-vff-ua2-F6A" source="_1Bhi4NBKEe-bgtsZ8Qd5kA" target="_w5sjsNC_Ee-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_b85IENELEe-vff-ua2-F6A" source="_YNiksNBLEe-bgtsZ8Qd5kA" target="_EMaVcNELEe-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_qTKtQNEPEe-vff-ua2-F6A" source="_Zy9DQNEPEe-vff-ua2-F6A" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_mfpQ8NESEe-vff-ua2-F6A" source="_flMAQNESEe-vff-ua2-F6A" target="_w5sjsNC_Ee-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_sxEywNESEe-vff-ua2-F6A" source="_QR3HkNBLEe-bgtsZ8Qd5kA" target="_z75iENEPEe-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_39N7ENESEe-vff-ua2-F6A" source="_vw5Z4NESEe-vff-ua2-F6A" target="_z75iENEPEe-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_V93EMNETEe-vff-ua2-F6A" source="_K2sigNETEe-vff-ua2-F6A" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_l1o1MNETEe-vff-ua2-F6A" source="_gFpMgNETEe-vff-ua2-F6A" target="_EMaVcNELEe-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_5T1TQNETEe-vff-ua2-F6A" source="_tGho4NETEe-vff-ua2-F6A" target="_w5sjsNC_Ee-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_0askoNEUEe-vff-ua2-F6A" source="_EY_p0NEUEe-vff-ua2-F6A" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_hyVs8NEVEe-vff-ua2-F6A" source="_QNbEsNEVEe-vff-ua2-F6A" target="_EMaVcNELEe-vff-ua2-F6A"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_JYDtQNBCEe-bgtsZ8Qd5kA" name=""/>
+      <subvertex xmi:type="uml:State" xmi:id="_POMkwNBDEe-bgtsZ8Qd5kA" name="Login">
+        <doActivity xmi:type="uml:Activity" xmi:id="_btwcwNBDEe-bgtsZ8Qd5kA" name="Inserisci email o username e password"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_Hr1xINBEEe-bgtsZ8Qd5kA" name="Registration">
+        <doActivity xmi:type="uml:Activity" xmi:id="_YjlKUNBEEe-bgtsZ8Qd5kA" name="Insert email, password and confirm password"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_a4pkQNBEEe-bgtsZ8Qd5kA" name="Invalid Password">
+        <doActivity xmi:type="uml:Activity" xmi:id="_fbzJ4NBFEe-bgtsZ8Qd5kA" name="show password's rule list"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_qgu28NBFEe-bgtsZ8Qd5kA" name="Incorrect Credentials">
+        <doActivity xmi:type="uml:Activity" xmi:id="_1k8yUNBFEe-bgtsZ8Qd5kA" name="show error message"/>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_pIHowNBGEe-bgtsZ8Qd5kA" name="User Profile">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_1Bhi4NBKEe-bgtsZ8Qd5kA" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_QR3HkNBLEe-bgtsZ8Qd5kA" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_YNiksNBLEe-bgtsZ8Qd5kA" kind="exitPoint"/>
+        <region xmi:type="uml:Region" xmi:id="_rzBv0NBGEe-bgtsZ8Qd5kA" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_lG-5INBHEe-bgtsZ8Qd5kA" source="_I8VoUNBHEe-bgtsZ8Qd5kA" target="_fYgTYNBHEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_Bybw8NBIEe-bgtsZ8Qd5kA" name="Insert Name" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_QdyAgNBHEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_PRPfcNBIEe-bgtsZ8Qd5kA" name="Insert Surname" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_XM480NBHEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_S62DYNBIEe-bgtsZ8Qd5kA" name="Insert Username" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_Z3oEwNBHEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_uDoOkNBIEe-bgtsZ8Qd5kA" name="Click Save" source="_XM480NBHEe-bgtsZ8Qd5kA" target="_q0_IUNBIEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_x9IPsNBIEe-bgtsZ8Qd5kA" name="Click Save" source="_Z3oEwNBHEe-bgtsZ8Qd5kA" target="_q0_IUNBIEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_2qDR0NBIEe-bgtsZ8Qd5kA" name="Click Save" source="_QdyAgNBHEe-bgtsZ8Qd5kA" target="_q0_IUNBIEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_NwVQ4NBJEe-bgtsZ8Qd5kA" name="Click Manage Password" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_D1weINBJEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_m9UdwNBJEe-bgtsZ8Qd5kA" name="Drop Picture" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_is4jUNBJEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_tvwa4NBJEe-bgtsZ8Qd5kA" name="Click Upload" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_is4jUNBJEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_5ObdoNBJEe-bgtsZ8Qd5kA" name="Click Save" source="_is4jUNBJEe-bgtsZ8Qd5kA" target="_q0_IUNBIEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_3_aQUNBKEe-bgtsZ8Qd5kA" name="Click on the +" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_1Bhi4NBKEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_S2Zg4NBLEe-bgtsZ8Qd5kA" name="Click on Research" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_QR3HkNBLEe-bgtsZ8Qd5kA"/>
+          <transition xmi:type="uml:Transition" xmi:id="_bBsuYNBLEe-bgtsZ8Qd5kA" name="Click on Forum" source="_fYgTYNBHEe-bgtsZ8Qd5kA" target="_YNiksNBLEe-bgtsZ8Qd5kA"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_I8VoUNBHEe-bgtsZ8Qd5kA" name=""/>
+          <subvertex xmi:type="uml:State" xmi:id="_QdyAgNBHEe-bgtsZ8Qd5kA" name="Name"/>
+          <subvertex xmi:type="uml:State" xmi:id="_WPPo0NBHEe-bgtsZ8Qd5kA" name="CopyOf_Name_2"/>
+          <subvertex xmi:type="uml:State" xmi:id="_XM480NBHEe-bgtsZ8Qd5kA" name="Surname"/>
+          <subvertex xmi:type="uml:State" xmi:id="_Z3oEwNBHEe-bgtsZ8Qd5kA" name="Username"/>
+          <subvertex xmi:type="uml:State" xmi:id="_fYgTYNBHEe-bgtsZ8Qd5kA" name="Main Page"/>
+          <subvertex xmi:type="uml:State" xmi:id="_q0_IUNBIEe-bgtsZ8Qd5kA" name="Profile Saved"/>
+          <subvertex xmi:type="uml:State" xmi:id="_D1weINBJEe-bgtsZ8Qd5kA" name="Password Management"/>
+          <subvertex xmi:type="uml:State" xmi:id="_is4jUNBJEe-bgtsZ8Qd5kA" name="Profile Picture"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_w5sjsNC_Ee-vff-ua2-F6A" name="Load Documents">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_EY_p0NEUEe-vff-ua2-F6A" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_7GAmENEUEe-vff-ua2-F6A" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_QNbEsNEVEe-vff-ua2-F6A" kind="exitPoint"/>
+        <region xmi:type="uml:Region" xmi:id="_1hDJUNC_Ee-vff-ua2-F6A" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_YIvCUND9Ee-vff-ua2-F6A" name="Enter description" source="_OCRIoND9Ee-vff-ua2-F6A" target="_UmXu0ND9Ee-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_p2NJoND9Ee-vff-ua2-F6A" name="Select Field" source="_OCRIoND9Ee-vff-ua2-F6A" target="_liSdYND9Ee-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_8u9_YND9Ee-vff-ua2-F6A" name="Select Course" source="_OCRIoND9Ee-vff-ua2-F6A" target="_1KPpsND9Ee-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_HzmKcND-Ee-vff-ua2-F6A" name="Drop File" source="_OCRIoND9Ee-vff-ua2-F6A" target="_Dtge0ND-Ee-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_qBnHYNEIEe-vff-ua2-F6A" source="_Dtge0ND-Ee-vff-ua2-F6A" target="_mzatENEIEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_1wFgsNEIEe-vff-ua2-F6A" source="_1KPpsND9Ee-vff-ua2-F6A" target="_mzatENEIEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_6NECUNEIEe-vff-ua2-F6A" source="_UmXu0ND9Ee-vff-ua2-F6A" target="_mzatENEIEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_KvnOoNEJEe-vff-ua2-F6A" source="_liSdYND9Ee-vff-ua2-F6A" target="_mzatENEIEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_IMgjQNEKEe-vff-ua2-F6A" name="Click on Load" source="_mzatENEIEe-vff-ua2-F6A" target="_pIJTUNEJEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_NSjQANEKEe-vff-ua2-F6A" source="_pIJTUNEJEe-vff-ua2-F6A" target="_OCRIoND9Ee-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_REQxoNELEe-vff-ua2-F6A" source="_GLYr8ND9Ee-vff-ua2-F6A" target="_OCRIoND9Ee-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_voyq8NELEe-vff-ua2-F6A" name="Select File" source="_OCRIoND9Ee-vff-ua2-F6A" target="_Dtge0ND-Ee-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_GTu4MNEUEe-vff-ua2-F6A" name="Click on Profile" source="_OCRIoND9Ee-vff-ua2-F6A" target="_EY_p0NEUEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_-GKkYNEUEe-vff-ua2-F6A" name="Click on Research" source="_OCRIoND9Ee-vff-ua2-F6A" target="_7GAmENEUEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_SMwfMNEVEe-vff-ua2-F6A" name="Click on Forum" source="_OCRIoND9Ee-vff-ua2-F6A" target="_QNbEsNEVEe-vff-ua2-F6A"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_GLYr8ND9Ee-vff-ua2-F6A" name=""/>
+          <subvertex xmi:type="uml:State" xmi:id="_OCRIoND9Ee-vff-ua2-F6A" name="Main Page"/>
+          <subvertex xmi:type="uml:State" xmi:id="_UmXu0ND9Ee-vff-ua2-F6A" name="Description"/>
+          <subvertex xmi:type="uml:State" xmi:id="_liSdYND9Ee-vff-ua2-F6A" name="Field of Study"/>
+          <subvertex xmi:type="uml:State" xmi:id="_1KPpsND9Ee-vff-ua2-F6A" name="Course"/>
+          <subvertex xmi:type="uml:State" xmi:id="_Dtge0ND-Ee-vff-ua2-F6A" name="File Upload"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_mzatENEIEe-vff-ua2-F6A" kind="join"/>
+          <subvertex xmi:type="uml:State" xmi:id="_pIJTUNEJEe-vff-ua2-F6A" name="Document Uploaded"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_EMaVcNELEe-vff-ua2-F6A" name="Forum">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_Zy9DQNEPEe-vff-ua2-F6A" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_vw5Z4NESEe-vff-ua2-F6A" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_tGho4NETEe-vff-ua2-F6A" kind="exitPoint"/>
+        <region xmi:type="uml:Region" xmi:id="_IqpbUNELEe-vff-ua2-F6A">
+          <transition xmi:type="uml:Transition" xmi:id="_IxLrsNEMEe-vff-ua2-F6A" source="_KNegANELEe-vff-ua2-F6A" target="_FFJe0NEMEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_NSvV4NENEe-vff-ua2-F6A" name="Write post" source="_FFJe0NEMEe-vff-ua2-F6A" target="_KsXJgNENEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_Z0pXQNENEe-vff-ua2-F6A" name="Click Publish" source="_KsXJgNENEe-vff-ua2-F6A" target="_umeAYNENEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_nbGl4NENEe-vff-ua2-F6A" name="Enter text" source="_KsXJgNENEe-vff-ua2-F6A" target="_umeAYNENEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="__D6qQNENEe-vff-ua2-F6A" source="_umeAYNENEe-vff-ua2-F6A" target="_FK0MgNENEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_OaQiINEOEe-vff-ua2-F6A" name="Comment" source="_FFJe0NEMEe-vff-ua2-F6A" target="_KOtHsNEOEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_bxuSgNEOEe-vff-ua2-F6A" name="Write a comment" source="_KOtHsNEOEe-vff-ua2-F6A" target="_ZeS3UNEOEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_ggvmYNEOEe-vff-ua2-F6A" name="Publish" source="_KOtHsNEOEe-vff-ua2-F6A" target="_ZeS3UNEOEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_6-wWQNEOEe-vff-ua2-F6A" source="_ZeS3UNEOEe-vff-ua2-F6A" target="_2kbgANEOEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_AQq70NEPEe-vff-ua2-F6A" source="_FK0MgNENEe-vff-ua2-F6A" target="_FFJe0NEMEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_EEImYNEPEe-vff-ua2-F6A" source="_2kbgANEOEe-vff-ua2-F6A" target="_FFJe0NEMEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_cVt68NEPEe-vff-ua2-F6A" name="Click on Profile" source="_FFJe0NEMEe-vff-ua2-F6A" target="_Zy9DQNEPEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_xXFUkNESEe-vff-ua2-F6A" name="Click on Research" source="_FFJe0NEMEe-vff-ua2-F6A" target="_vw5Z4NESEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_vXnhwNETEe-vff-ua2-F6A" name="Click on the +" source="_FFJe0NEMEe-vff-ua2-F6A" target="_tGho4NETEe-vff-ua2-F6A"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_KNegANELEe-vff-ua2-F6A"/>
+          <subvertex xmi:type="uml:State" xmi:id="_FFJe0NEMEe-vff-ua2-F6A" name="Main Page"/>
+          <subvertex xmi:type="uml:State" xmi:id="_FK0MgNENEe-vff-ua2-F6A" name="Post"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_KsXJgNENEe-vff-ua2-F6A" kind="fork"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_umeAYNENEe-vff-ua2-F6A" kind="join"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_KOtHsNEOEe-vff-ua2-F6A" kind="fork"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_ZeS3UNEOEe-vff-ua2-F6A" kind="join"/>
+          <subvertex xmi:type="uml:State" xmi:id="_2kbgANEOEe-vff-ua2-F6A" name="Comment"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:State" xmi:id="_z75iENEPEe-vff-ua2-F6A" name="Search Documents">
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_flMAQNESEe-vff-ua2-F6A" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_K2sigNETEe-vff-ua2-F6A" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_gFpMgNETEe-vff-ua2-F6A" kind="exitPoint"/>
+        <region xmi:type="uml:Region" xmi:id="_2YT6INEPEe-vff-ua2-F6A" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_xRDP8NEQEe-vff-ua2-F6A" name="Select User" source="_FlWFANEQEe-vff-ua2-F6A" target="_uINPsNEQEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_Op0gwNEREe-vff-ua2-F6A" name="Click Search" source="_uINPsNEQEe-vff-ua2-F6A" target="_Kc-s4NEREe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_TmMUINEREe-vff-ua2-F6A" name="Document not Found" source="_Kc-s4NEREe-vff-ua2-F6A" target="_FlWFANEQEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_hBBhkNEREe-vff-ua2-F6A" name="Download Document" source="_Kc-s4NEREe-vff-ua2-F6A" target="_Kc-s4NEREe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_p0I9ANEREe-vff-ua2-F6A" name="Click on Clear" source="_Kc-s4NEREe-vff-ua2-F6A" target="_FlWFANEQEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_FanJwNESEe-vff-ua2-F6A" name="Selecr Field of Study" source="_FlWFANEQEe-vff-ua2-F6A" target="_CKZWMNESEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_RpWXgNESEe-vff-ua2-F6A" name="Click Search" source="_CKZWMNESEe-vff-ua2-F6A" target="_Kc-s4NEREe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_atClkNESEe-vff-ua2-F6A" source="_-3ee0NEPEe-vff-ua2-F6A" target="_FlWFANEQEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_hB4AsNESEe-vff-ua2-F6A" name="Click on the +" source="_FlWFANEQEe-vff-ua2-F6A" target="_flMAQNESEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_Mv9KMNETEe-vff-ua2-F6A" name="Click on Profile" source="_FlWFANEQEe-vff-ua2-F6A" target="_K2sigNETEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_h5M00NETEe-vff-ua2-F6A" name="Click on Forum" source="_FlWFANEQEe-vff-ua2-F6A" target="_gFpMgNETEe-vff-ua2-F6A"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_-3ee0NEPEe-vff-ua2-F6A"/>
+          <subvertex xmi:type="uml:State" xmi:id="_FlWFANEQEe-vff-ua2-F6A" name="Main Page"/>
+          <subvertex xmi:type="uml:State" xmi:id="_uINPsNEQEe-vff-ua2-F6A" name="Uploaded By"/>
+          <subvertex xmi:type="uml:State" xmi:id="_Kc-s4NEREe-vff-ua2-F6A" name="Document List"/>
+          <subvertex xmi:type="uml:State" xmi:id="_CKZWMNESEe-vff-ua2-F6A" name="Field of Study"/>
+        </region>
+      </subvertex>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_qG9wQLy2Ee-zaMWtr6BXVQ" name="Dati Corretti"/>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_OB-dsLzFEe-zaMWtr6BXVQ" name="Documento Trovato"/>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_GAebgNBEEe-bgtsZ8Qd5kA" name="Already Registered"/>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_glkr0LyxEe-zaMWtr6BXVQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gluc0LyxEe-zaMWtr6BXVQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
