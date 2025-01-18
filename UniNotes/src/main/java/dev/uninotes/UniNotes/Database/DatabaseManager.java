@@ -265,6 +265,8 @@ public class DatabaseManager {
                 return false;
             }
 
+            return true;
+
         } catch (SQLException e) {
             System.out.println("Error publishing post: " + e.getMessage());
         }
