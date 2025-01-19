@@ -4,17 +4,24 @@
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   </packageImport>
   <packagedElement xmi:type="uml:Package" xmi:id="_mf0YoLi_Ee-WUefWvu-cXA" name="UniBgNotes" visibility="public">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_n3NdMNZqEe--tN2JSsjSWA">
+      <body>Extension point:&#xD;
+Modifica Password&#xD;
+Condition:&#xD;
+Password dimenticata&#xD;
+&#xD;
+</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_ttV50LjAEe-WUefWvu-cXA" name="Registrazione">
       <include xmi:type="uml:Include" xmi:id="_0n1GoLk3Ee-U_4ftgzuNpQ" visibility="package" addition="_tHsWALk3Ee-U_4ftgzuNpQ"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_zOnxELjAEe-WUefWvu-cXA" name="Accesso (Log In)"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_pEEhQLjDEe-WUefWvu-cXA" name="Visualizzazione documenti"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_zOnxELjAEe-WUefWvu-cXA" name="Accesso (Log In)">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_g5PlgNZqEe--tN2JSsjSWA" name="ExtensionPoint1"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_zxo3MLjDEe-WUefWvu-cXA" name="Ricerca appunti e documenti"/>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_64mS0LjDEe-WUefWvu-cXA" name="Caricamento di un documento">
       <include xmi:type="uml:Include" xmi:id="_j1Qm4LvgEe-a7azBPc_Kcw" addition="_hsGiALvgEe-a7azBPc_Kcw"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_FWiRULjEEe-WUefWvu-cXA" name="Modifica documenti caricati"/>
-    <packagedElement xmi:type="uml:UseCase" xmi:id="_RpURkLjEEe-WUefWvu-cXA" name="Eliminazione documento caricato"/>
     <packagedElement xmi:type="uml:UseCase" xmi:id="_jeFTsLjEEe-WUefWvu-cXA" name="Download documenti">
       <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_R94G4LvmEe-a7azBPc_Kcw" name="ExtensionPoint1"/>
     </packagedElement>
@@ -31,16 +38,13 @@
     <packagedElement xmi:type="uml:UseCase" xmi:id="_wrxFoLvoEe-a7azBPc_Kcw" name="Commento">
       <generalization xmi:type="uml:Generalization" xmi:id="_0xpV4LvoEe-a7azBPc_Kcw" general="_EXqj8Lk1Ee-U_4ftgzuNpQ"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_aSkzgNZqEe--tN2JSsjSWA" name="PasswordManagement">
+      <extend xmi:type="uml:Extend" xmi:id="_g5L7INZqEe--tN2JSsjSWA" extendedCase="_zOnxELjAEe-WUefWvu-cXA" extensionLocation="_g5PlgNZqEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_E4KD4NZrEe--tN2JSsjSWA" name="Class17"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Actor" xmi:id="_byMwoLjFEe-WUefWvu-cXA" name="Amministratore"/>
   <packagedElement xmi:type="uml:Actor" xmi:id="_oHtDYLk2Ee-U_4ftgzuNpQ" name="Utente"/>
-  <packagedElement xmi:type="uml:Association" xmi:id="_tKtDMLk2Ee-U_4ftgzuNpQ" memberEnd="_tKvfcLk2Ee-U_4ftgzuNpQ _tKvfcbk2Ee-U_4ftgzuNpQ">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tKu4YLk2Ee-U_4ftgzuNpQ" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tKu4Ybk2Ee-U_4ftgzuNpQ" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_tKvfcLk2Ee-U_4ftgzuNpQ" name="visualizzazione documenti" type="_pEEhQLjDEe-WUefWvu-cXA" association="_tKtDMLk2Ee-U_4ftgzuNpQ"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_tKvfcbk2Ee-U_4ftgzuNpQ" name="utente" type="_oHtDYLk2Ee-U_4ftgzuNpQ" association="_tKtDMLk2Ee-U_4ftgzuNpQ"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_YNw5wLk3Ee-U_4ftgzuNpQ" memberEnd="_YNyu8bk3Ee-U_4ftgzuNpQ _YNyu8rk3Ee-U_4ftgzuNpQ">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YNyH4Lk3Ee-U_4ftgzuNpQ" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YNyu8Lk3Ee-U_4ftgzuNpQ" key="nature" value="UML_Nature"/>
@@ -82,20 +86,6 @@
     </eAnnotations>
     <ownedEnd xmi:type="uml:Property" xmi:id="_0xKuYbvgEe-a7azBPc_Kcw" name="ricerca appunti e documenti" type="_zxo3MLjDEe-WUefWvu-cXA" association="_0xJgQLvgEe-a7azBPc_Kcw"/>
     <ownedEnd xmi:type="uml:Property" xmi:id="_0xKuYrvgEe-a7azBPc_Kcw" name="utente" type="_oHtDYLk2Ee-U_4ftgzuNpQ" association="_0xJgQLvgEe-a7azBPc_Kcw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_7ciaMLvgEe-a7azBPc_Kcw" memberEnd="_7cmroLvgEe-a7azBPc_Kcw _7cmrobvgEe-a7azBPc_Kcw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_7cmEkLvgEe-a7azBPc_Kcw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_7cmEkbvgEe-a7azBPc_Kcw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_7cmroLvgEe-a7azBPc_Kcw" name="modifica documenti caricati" type="_FWiRULjEEe-WUefWvu-cXA" association="_7ciaMLvgEe-a7azBPc_Kcw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_7cmrobvgEe-a7azBPc_Kcw" name="utente" type="_oHtDYLk2Ee-U_4ftgzuNpQ" association="_7ciaMLvgEe-a7azBPc_Kcw"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_BgrG4LvhEe-a7azBPc_Kcw" memberEnd="_BgsVArvhEe-a7azBPc_Kcw _Bgs8ELvhEe-a7azBPc_Kcw">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_BgsVALvhEe-a7azBPc_Kcw" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_BgsVAbvhEe-a7azBPc_Kcw" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_BgsVArvhEe-a7azBPc_Kcw" name="eliminazione documento caricato" type="_RpURkLjEEe-WUefWvu-cXA" association="_BgrG4LvhEe-a7azBPc_Kcw"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_Bgs8ELvhEe-a7azBPc_Kcw" name="utente" type="_oHtDYLk2Ee-U_4ftgzuNpQ" association="_BgrG4LvhEe-a7azBPc_Kcw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_PgFBALvhEe-a7azBPc_Kcw" memberEnd="_PgGPIbvhEe-a7azBPc_Kcw _PgG2MLvhEe-a7azBPc_Kcw">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PgFoELvhEe-a7azBPc_Kcw" source="org.eclipse.papyrus">

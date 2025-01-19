@@ -8,7 +8,7 @@
       <packagedElement xmi:type="uml:Dependency" xmi:id="_f0I5QNZXEe--tN2JSsjSWA" name="import" client="_G7ztwNZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_kiFPENZXEe--tN2JSsjSWA" name="import" client="_G7ztwNZXEe--tN2JSsjSWA" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_J7CfANZXEe--tN2JSsjSWA" name="dev.uninotes.UnoNotes.Database">
+    <packagedElement xmi:type="uml:Package" xmi:id="_J7CfANZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Database">
       <packagedElement xmi:type="uml:Dependency" xmi:id="_AXBgMNZZEe--tN2JSsjSWA" name="import" client="_J7CfANZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_EIiqANZZEe--tN2JSsjSWA" name="import" client="_J7CfANZXEe--tN2JSsjSWA" supplier="_NI0poNZXEe--tN2JSsjSWA"/>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_JOLuINZZEe--tN2JSsjSWA" name="import" client="_J7CfANZXEe--tN2JSsjSWA" supplier="_G7ztwNZXEe--tN2JSsjSWA"/>
@@ -36,7 +36,7 @@
       <packagedElement xmi:type="uml:Dependency" xmi:id="_rMpCkNZXEe--tN2JSsjSWA" name="Needs" client="_YLoPwNZXEe--tN2JSsjSWA" supplier="_ZwacQNZXEe--tN2JSsjSWA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_ZwacQNZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Exceptions"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_dHzO0NZXEe--tN2JSsjSWA" name="dev.uninotes.UnoNotes.Components">
+    <packagedElement xmi:type="uml:Package" xmi:id="_dHzO0NZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Components">
       <packagedElement xmi:type="uml:Dependency" xmi:id="_HjrJkNZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_G7ztwNZXEe--tN2JSsjSWA"/>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_d_2bsNZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_1iiC4NZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_NI0poNZXEe--tN2JSsjSWA"/>
