@@ -214,22 +214,6 @@
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_k8EHgNW2Ee-hBp7FjFxKDw" name="commentSection" visibility="private" type="_rXTFkNW2Ee-hBp7FjFxKDw"/>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_uT3kYNW2Ee-hBp7FjFxKDw" name="existingCommentLayout" visibility="private" type="_rXTFkNW2Ee-hBp7FjFxKDw"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_j347cNW7Ee-hBp7FjFxKDw" name="idPost">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_mRQmkNW7Ee-hBp7FjFxKDw" name="username">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_q24G0NW7Ee-hBp7FjFxKDw" name="userImage">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_tJ4EMNW7Ee-hBp7FjFxKDw" name="text">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_xNqpwNW7Ee-hBp7FjFxKDw" name="dateTime">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
-        </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_wxrb4NW8Ee-hBp7FjFxKDw" name="comment" type="_rxopcNW8Ee-hBp7FjFxKDw"/>
         <ownedOperation xmi:type="uml:Operation" xmi:id="_22tV4NW7Ee-hBp7FjFxKDw" name="postComment" visibility="public">
           <ownedParameter xmi:type="uml:Parameter" xmi:id="_53N5gNW7Ee-hBp7FjFxKDw" name="idPost">
             <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
