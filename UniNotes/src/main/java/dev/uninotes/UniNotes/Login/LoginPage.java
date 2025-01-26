@@ -57,7 +57,7 @@ public class LoginPage extends VerticalLayout {
                 Utils.loggedIn();
 
                 //user logged
-                UI.getCurrent().navigate("home");
+                UI.getCurrent().navigate("posts");
 
             } else {
                 Notification.show("Invalid credentials", 5000, Notification.Position.MIDDLE);

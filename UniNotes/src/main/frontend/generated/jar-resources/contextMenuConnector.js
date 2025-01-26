@@ -1,10 +1,10 @@
 function getContainer(appId, nodeId) {
-    try {
-        return window.Vaadin.Flow.clients[appId].getByNodeId(nodeId);
-    } catch (error) {
-        console.error('Could not get node %s from app %s', nodeId, appId);
-        console.error(error);
-    }
+  try {
+    return window.Vaadin.Flow.clients[appId].getByNodeId(nodeId);
+  } catch (error) {
+    console.error('Could not get node %s from app %s', nodeId, appId);
+    console.error(error);
+  }
 }
 
 /**
@@ -14,22 +14,22 @@ function getContainer(appId, nodeId) {
  * @param {string} appId
  */
 function initLazy(contextMenu, appId) {
-    if (contextMenu.$connector) {
-        return;
+  if (contextMenu.$connector) {
+    return;
+  }
+
+  contextMenu.$connector = {
+    /**
+     * Generates and assigns the items to the context menu.
+     *
+     * @param {number} nodeId
+     */
+    generateItems(nodeId) {
+      const items = generateItemsTree(appId, nodeId);
+
+      contextMenu.items = items;
     }
-
-    contextMenu.$connector = {
-        /**
-         * Generates and assigns the items to the context menu.
-         *
-         * @param {number} nodeId
-         */
-        generateItems(nodeId) {
-            const items = generateItemsTree(appId, nodeId);
-
-            contextMenu.items = items;
-        }
-    };
+  };
 }
 
 /**
@@ -43,26 +43,26 @@ function initLazy(contextMenu, appId) {
  * @param {number} nodeId
  */
 function generateItemsTree(appId, nodeId) {
-    const container = getContainer(appId, nodeId);
-    if (!container) {
-        return;
-    }
+  const container = getContainer(appId, nodeId);
+  if (!container) {
+    return;
+  }
 
-    return Array.from(container.children).map((child) => {
-        const item = {
-            component: child,
-            checked: child._checked,
-            keepOpen: child._keepOpen,
-            className: child.className,
-            theme: child.__theme
-        };
-        // Do not hardcode tag name to allow `vaadin-menu-bar-item`
-        if (child._hasVaadinItemMixin && child._containerNodeId) {
-            item.children = generateItemsTree(appId, child._containerNodeId);
-        }
-        child._item = item;
-        return item;
-    });
+  return Array.from(container.children).map((child) => {
+    const item = {
+      component: child,
+      checked: child._checked,
+      keepOpen: child._keepOpen,
+      className: child.className,
+      theme: child.__theme
+    };
+    // Do not hardcode tag name to allow `vaadin-menu-bar-item`
+    if (child._hasVaadinItemMixin && child._containerNodeId) {
+      item.children = generateItemsTree(appId, child._containerNodeId);
+    }
+    child._item = item;
+    return item;
+  });
 }
 
 /**
@@ -75,15 +75,15 @@ function generateItemsTree(appId, nodeId) {
  * @param {boolean} checked
  */
 function setChecked(component, checked) {
-    if (component._item) {
-        component._item.checked = checked;
+  if (component._item) {
+    component._item.checked = checked;
 
-        // Set the attribute in the connector to show the checkmark
-        // without having to re-render the whole menu while opened.
-        if (component._item.keepOpen) {
-            component.toggleAttribute('menu-item-checked', checked);
-        }
+    // Set the attribute in the connector to show the checkmark
+    // without having to re-render the whole menu while opened.
+    if (component._item.keepOpen) {
+      component.toggleAttribute('menu-item-checked', checked);
     }
+  }
 }
 
 /**
@@ -93,9 +93,9 @@ function setChecked(component, checked) {
  * @param {boolean} keepOpen
  */
 function setKeepOpen(component, keepOpen) {
-    if (component._item) {
-        component._item.keepOpen = keepOpen;
-    }
+  if (component._item) {
+    component._item.keepOpen = keepOpen;
+  }
 }
 
 /**
@@ -108,15 +108,15 @@ function setKeepOpen(component, keepOpen) {
  * @param {string | undefined | null} theme
  */
 function setTheme(component, theme) {
-    if (component._item) {
-        component._item.theme = theme;
-    }
+  if (component._item) {
+    component._item.theme = theme;
+  }
 }
 
 window.Vaadin.Flow.contextMenuConnector = {
-    initLazy,
-    generateItemsTree,
-    setChecked,
-    setKeepOpen,
-    setTheme
+  initLazy,
+  generateItemsTree,
+  setChecked,
+  setKeepOpen,
+  setTheme
 };

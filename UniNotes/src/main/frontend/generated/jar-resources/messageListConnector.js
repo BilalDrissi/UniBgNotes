@@ -14,20 +14,20 @@
  * the License.
  */
 window.Vaadin.Flow.messageListConnector = {
-    setItems(list, items, locale) {
-        const formatter = new Intl.DateTimeFormat(locale, {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric'
-        });
-        list.items = items.map((item) =>
-            item.time
-                ? Object.assign(item, {
-                    time: formatter.format(new Date(item.time))
-                })
-                : item
-        );
-    }
+  setItems(list, items, locale) {
+    const formatter = new Intl.DateTimeFormat(locale, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    });
+    list.items = items.map((item) =>
+      item.time
+        ? Object.assign(item, {
+            time: formatter.format(new Date(item.time))
+          })
+        : item
+    );
+  }
 };

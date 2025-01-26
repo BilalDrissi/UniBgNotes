@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable max-params */
-import {html, render} from 'lit';
-import {live} from 'lit/directives/live.js';
+import { html, render } from 'lit';
+import { live } from 'lit/directives/live.js';
 
 type RenderRoot = HTMLElement & { __litRenderer?: Renderer; _$litPart$?: any };
 
@@ -28,69 +28,69 @@ _window.Vaadin = _window.Vaadin || {};
  * Needed to avoid property name collisions between renderers.
  */
 _window.Vaadin.setLitRenderer = (
-    component: Component,
-    rendererName: string,
-    templateExpression: string,
-    returnChannel: (name: string, itemKey: string, args: any[]) => void,
-    clientCallables: string[],
-    propertyNamespace: string,
-    appId: string
+  component: Component,
+  rendererName: string,
+  templateExpression: string,
+  returnChannel: (name: string, itemKey: string, args: any[]) => void,
+  clientCallables: string[],
+  propertyNamespace: string,
+  appId: string
 ) => {
-    const callablesCreator = (itemKey: string) => {
-        return clientCallables.map((clientCallable) => (...args: any[]) => {
-            if (itemKey !== undefined) {
-                returnChannel(clientCallable, itemKey, args[0] instanceof Event ? [] : [...args]);
-            }
-        });
-    };
-    const fnArgs = [
-        'html',
-        'root',
-        'live',
-        'appId',
-        'itemKey',
-        'model',
-        'item',
-        'index',
-        ...clientCallables,
-        `return html\`${templateExpression}\``
-    ];
-    const htmlGenerator = new Function(...fnArgs);
-    const renderFunction = (root: RenderRoot, model: ItemModel, itemKey: string) => {
-        const {item, index} = model;
-        render(htmlGenerator(html, root, live, appId, itemKey, model, item, index, ...callablesCreator(itemKey)), root);
-    };
+  const callablesCreator = (itemKey: string) => {
+    return clientCallables.map((clientCallable) => (...args: any[]) => {
+      if (itemKey !== undefined) {
+        returnChannel(clientCallable, itemKey, args[0] instanceof Event ? [] : [...args]);
+      }
+    });
+  };
+  const fnArgs = [
+    'html',
+    'root',
+    'live',
+    'appId',
+    'itemKey',
+    'model',
+    'item',
+    'index',
+    ...clientCallables,
+    `return html\`${templateExpression}\``
+  ];
+  const htmlGenerator = new Function(...fnArgs);
+  const renderFunction = (root: RenderRoot, model: ItemModel, itemKey: string) => {
+    const { item, index } = model;
+    render(htmlGenerator(html, root, live, appId, itemKey, model, item, index, ...callablesCreator(itemKey)), root);
+  };
 
-    const renderer: Renderer = (root, _, model) => {
-        const {item} = model;
-        // Clean up the root element of any existing content
-        // (and Lit's _$litPart$ property) from other renderers
-        // TODO: Remove once https://github.com/vaadin/web-components/issues/2235 is done
-        if (root.__litRenderer !== renderer) {
-            root.innerHTML = '';
-            delete root._$litPart$;
-            root.__litRenderer = renderer;
-        }
+  const renderer: Renderer = (root, _, model) => {
+    const { item } = model;
+    // Clean up the root element of any existing content
+    // (and Lit's _$litPart$ property) from other renderers
+    // TODO: Remove once https://github.com/vaadin/web-components/issues/2235 is done
+    if (root.__litRenderer !== renderer) {
+      root.innerHTML = '';
+      delete root._$litPart$;
+      root.__litRenderer = renderer;
+    }
 
-        // Map a new item that only includes the properties defined by
-        // this specific LitRenderer instance. The renderer instance specific
-        // "propertyNamespace" prefix is stripped from the property name at this point:
-        //
-        // item: { key: "2", lr_3769df5394a74ef3_lastName: "Tyler"}
-        // ->
-        // mappedItem: { lastName: "Tyler" }
-        const mappedItem: { [key: string]: any } = {};
-        for (const key in item) {
-            if (key.startsWith(propertyNamespace)) {
-                mappedItem[key.replace(propertyNamespace, '')] = item[key];
-            }
-        }
+    // Map a new item that only includes the properties defined by
+    // this specific LitRenderer instance. The renderer instance specific
+    // "propertyNamespace" prefix is stripped from the property name at this point:
+    //
+    // item: { key: "2", lr_3769df5394a74ef3_lastName: "Tyler"}
+    // ->
+    // mappedItem: { lastName: "Tyler" }
+    const mappedItem: { [key: string]: any } = {};
+    for (const key in item) {
+      if (key.startsWith(propertyNamespace)) {
+        mappedItem[key.replace(propertyNamespace, '')] = item[key];
+      }
+    }
 
-        renderFunction(root, {...model, item: mappedItem}, item.key);
-    };
+    renderFunction(root, { ...model, item: mappedItem }, item.key);
+  };
 
-    renderer.__rendererId = propertyNamespace;
-    component[rendererName] = renderer;
+  renderer.__rendererId = propertyNamespace;
+  component[rendererName] = renderer;
 };
 
 /**
@@ -102,11 +102,11 @@ _window.Vaadin.setLitRenderer = (
  * @param rendererId The rendererId of the function to be removed
  */
 _window.Vaadin.unsetLitRenderer = (component: Component, rendererName: string, rendererId: string) => {
-    // The check for __rendererId property is necessary since the renderer function
-    // may get overridden by another renderer, for example, by one coming from
-    // vaadin-template-renderer. We don't want LitRenderer registration cleanup to
-    // unintentionally remove the new renderer.
-    if (component[rendererName]?.__rendererId === rendererId) {
-        component[rendererName] = undefined;
-    }
+  // The check for __rendererId property is necessary since the renderer function
+  // may get overridden by another renderer, for example, by one coming from
+  // vaadin-template-renderer. We don't want LitRenderer registration cleanup to
+  // unintentionally remove the new renderer.
+  if (component[rendererName]?.__rendererId === rendererId) {
+    component[rendererName] = undefined;
+  }
 };
