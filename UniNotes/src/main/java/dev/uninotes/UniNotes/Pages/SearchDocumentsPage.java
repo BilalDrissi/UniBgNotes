@@ -65,7 +65,7 @@ public class SearchDocumentsPage extends VerticalLayout {
             }
         });
 
-        HorizontalLayout firstRow = new HorizontalLayout(userComboBox, typeComboBox,fieldOfStudyComboBox, courseComboBox);
+        HorizontalLayout firstRow = new HorizontalLayout(userComboBox, typeComboBox, fieldOfStudyComboBox, courseComboBox);
         firstRow.setWidthFull();
         firstRow.setJustifyContentMode(JustifyContentMode.CENTER);
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);

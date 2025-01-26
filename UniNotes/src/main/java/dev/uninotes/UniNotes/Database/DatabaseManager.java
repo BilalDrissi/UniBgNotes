@@ -17,6 +17,7 @@ public class DatabaseManager {
 
     /**
      * Establish a connection to the SQLite database.
+     *
      * @return a Connection object
      */
     public static Connection connect() {
@@ -38,13 +39,13 @@ public class DatabaseManager {
      */
     public static void initialize() {
         String createUsersTable = """
-            CREATE TABLE IF NOT EXISTS users (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                email TEXT NOT NULL UNIQUE,
-                username TEXT NOT NULL UNIQUE,
-                password TEXT NOT NULL
-            );
-        """;
+                    CREATE TABLE IF NOT EXISTS users (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        email TEXT NOT NULL UNIQUE,
+                        username TEXT NOT NULL UNIQUE,
+                        password TEXT NOT NULL
+                    );
+                """;
 
         try (Connection connection = connect();
              Statement statement = connection.createStatement()) {
@@ -57,7 +58,8 @@ public class DatabaseManager {
 
     /**
      * Add a new user to the database.
-     * @param email the email of the user
+     *
+     * @param email    the email of the user
      * @param password the password of the user
      * @return true if the user was added successfully, false otherwise
      */
@@ -78,7 +80,8 @@ public class DatabaseManager {
 
     /**
      * Validate user credentials.
-     * @param email the email of the user
+     *
+     * @param email    the email of the user
      * @param password the password of the user
      * @return true if the credentials are valid, false otherwise
      */
@@ -92,7 +95,7 @@ public class DatabaseManager {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             // if the user exists
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return true;
             }
             return false;
@@ -111,7 +114,7 @@ public class DatabaseManager {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //if the user exists
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return resultSet;
             }
 
@@ -129,7 +132,7 @@ public class DatabaseManager {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //if the user exists
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return resultSet.getString("username");
             }
 
@@ -147,7 +150,7 @@ public class DatabaseManager {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //if the user exists
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return Arrays.asList(resultSet.getString("username"), resultSet.getString("image"));
             }
 
@@ -156,8 +159,6 @@ public class DatabaseManager {
         }
         return null;
     }
-
-
 
 
     //used to get the username of the user which posted a post
@@ -169,7 +170,7 @@ public class DatabaseManager {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             //if the user exists
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return new Post.UserForPost(
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
@@ -215,10 +216,11 @@ public class DatabaseManager {
 
     /**
      * Updates user.
-     * @param id the id to look up the user
-     * @param email the new email of the user
-     * @param surname the new surname
-     * @param name the new name
+     *
+     * @param id       the id to look up the user
+     * @param email    the new email of the user
+     * @param surname  the new surname
+     * @param name     the new name
      * @param username the new username
      * @return true if the user has been updated
      */
@@ -239,7 +241,7 @@ public class DatabaseManager {
             preparedStatement.executeUpdate();
             System.out.println("User updated successfully");
 
-            User.getInstance().update(id,username,email, name, surname, image);
+            User.getInstance().update(id, username, email, name, surname, image);
 
             return true;
         } catch (SQLException e) {
@@ -328,7 +330,6 @@ public class DatabaseManager {
             int idType = typeResult.getInt("id");
 
 
-
             postStatement.setString(1, description);
             postStatement.setInt(2, idUser);
             postStatement.setInt(3, idCourse);
@@ -378,10 +379,6 @@ public class DatabaseManager {
     }
 
 
-
-
-
-
     public static ArrayList<Post> SELECT_POSTS() {
         //the last post has the largest id (similar to order for date)
         String query = "SELECT * FROM posts ORDER BY id DESC";
@@ -395,7 +392,7 @@ public class DatabaseManager {
 
             //reads all the posts and loads them into the list
             //expecting to add LIMIT if the number of the posts exponentially increases
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 posts.add(new Post(
                         LocalDateTime.parse(resultSet.getString("date"), formatter),
                         resultSet.getString("text"),
@@ -425,7 +422,7 @@ public class DatabaseManager {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 comments.add(new Comment(
                         resultSet.getString("text"),
                         resultSet.getInt("id_user"),
@@ -446,21 +443,21 @@ public class DatabaseManager {
 
     public static ArrayList<Note> SELECT_NOTES(String field, String course, String username, String type) {
         String query = """
-            SELECT n.*,t.type, c.name
-            FROM notes n
-            JOIN courses c ON n.id_course = c.id
-            JOIN faculties f ON c.id_faculty = f.id
-            JOIN users u ON u.id = n.id_user
-            JOIN note_types t ON t.id = n.id_type
-            WHERE 1=1
-        """ +
+                    SELECT n.*,t.type, c.name
+                    FROM notes n
+                    JOIN courses c ON n.id_course = c.id
+                    JOIN faculties f ON c.id_faculty = f.id
+                    JOIN users u ON u.id = n.id_user
+                    JOIN note_types t ON t.id = n.id_type
+                    WHERE 1=1
+                """ +
                 (course != null && !course.isEmpty() ? " AND c.name = ?" : "") +
                 (username != null && !username.isEmpty() ? " AND u.username = ?" : "") +
                 (field != null && !field.isEmpty() ? " AND f.name = ? " : "") +
                 (type != null && !type.isEmpty() ? " AND t.type = ? " : "") +
                 """
-            ORDER BY n.dateTime DESC
-        """;
+                            ORDER BY n.dateTime DESC
+                        """;
 
         ArrayList<Note> notes = new ArrayList<>();
 
@@ -503,8 +500,6 @@ public class DatabaseManager {
 
         return notes;
     }
-
-
 
 
     public static List<String> SELECT_USERNAMES() {
@@ -555,12 +550,12 @@ public class DatabaseManager {
 
     public static Map<String, List<String>> SELECT_COURSES_BY_FACULTY(String faculty) {
         String query = """
-        SELECT faculties.name AS faculty, courses.name AS course 
-        FROM courses 
-        JOIN faculties ON courses.id_faculty = faculties.id
-        WHERE faculty = ?
-        ORDER BY faculties.name, courses.name
-    """;
+                    SELECT faculties.name AS faculty, courses.name AS course 
+                    FROM courses 
+                    JOIN faculties ON courses.id_faculty = faculties.id
+                    WHERE faculty = ?
+                    ORDER BY faculties.name, courses.name
+                """;
 
         Map<String, List<String>> coursesByField = new HashMap<>();
 
@@ -652,11 +647,6 @@ public class DatabaseManager {
 
         return false;
     }
-
-
-
-
-
 
 
 }

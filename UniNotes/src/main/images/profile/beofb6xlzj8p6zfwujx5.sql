@@ -7,9 +7,11 @@
 -- Versione del server: 8.0.22-13
 -- Versione PHP: 8.2.21
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET
+SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET
+time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,10 +29,11 @@ SET time_zone = "+00:00";
 -- Struttura della tabella `User`
 --
 
-CREATE TABLE `User` (
-  `id` int NOT NULL,
-  `email` varchar(64) NOT NULL,
-  `username` varchar(16) NOT NULL
+CREATE TABLE `User`
+(
+    `id`       int         NOT NULL,
+    `email`    varchar(64) NOT NULL,
+    `username` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -41,7 +44,7 @@ CREATE TABLE `User` (
 -- Indici per le tabelle `User`
 --
 ALTER TABLE `User`
-  ADD PRIMARY KEY (`id`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -51,7 +54,7 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT per la tabella `User`
 --
 ALTER TABLE `User`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+    MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

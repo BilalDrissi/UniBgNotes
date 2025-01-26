@@ -2,14 +2,10 @@ package dev.uninotes.UniNotes.Database;
 
 import dev.uninotes.UniNotes.Note;
 import dev.uninotes.UniNotes.Post;
-import dev.uninotes.UniNotes.User.User;
 import org.junit.jupiter.api.*;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,6 +15,11 @@ public class TestDatabaseManager {
     @BeforeAll
     static void setupDatabase() {
         DatabaseManager.initialize();
+    }
+
+    @AfterAll
+    static void tearDown() {
+        System.out.println("All tests completed.");
     }
 
     @Test
@@ -118,10 +119,5 @@ public class TestDatabaseManager {
         List<String> usernames = DatabaseManager.SELECT_USERNAMES();
         assertNotNull(usernames, "Usernames should not be null");
         assertFalse(usernames.isEmpty(), "Usernames list should not be empty");
-    }
-
-    @AfterAll
-    static void tearDown() {
-        System.out.println("All tests completed.");
     }
 }

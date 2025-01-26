@@ -1,15 +1,18 @@
-import { LitElement } from 'lit';
-import { Product } from './License';
-import { ConnectionStatus } from './connection';
+import {LitElement} from 'lit';
+import {Product} from './License';
+import {ConnectionStatus} from './connection';
+
 /**
  * Plugin API for the dev tools window.
  */
 export interface DevToolsInterface {
     send(command: string, data: any): void;
 }
+
 export interface MessageHandler {
     handleMessage(message: ServerMessage): boolean;
 }
+
 export interface ServerMessage {
     /**
      * The command
@@ -20,6 +23,7 @@ export interface ServerMessage {
      */
     data: any;
 }
+
 /**
  * To create and register a plugin, use e.g.
  * @example
@@ -46,12 +50,14 @@ export interface DevToolsPlugin {
      */
     init(devToolsInterface: DevToolsInterface): void;
 }
+
 export declare enum MessageType {
     LOG = "log",
     INFORMATION = "information",
     WARNING = "warning",
     ERROR = "error"
 }
+
 type DevToolsConf = {
     enable: boolean;
     url: string;
@@ -59,10 +65,8 @@ type DevToolsConf = {
     liveReloadPort: number;
     token?: string;
 };
+
 export declare class VaadinDevTools extends LitElement {
-    unhandledMessages: ServerMessage[];
-    conf: DevToolsConf;
-    static get styles(): import("lit").CSSResult[];
     static DISMISSED_NOTIFICATIONS_IN_LOCAL_STORAGE: string;
     static ACTIVE_KEY_IN_SESSION_STORAGE: string;
     static TRIGGERED_KEY_IN_SESSION_STORAGE: string;
@@ -72,28 +76,48 @@ export declare class VaadinDevTools extends LitElement {
     static JREBEL: string;
     static SPRING_BOOT_DEVTOOLS: string;
     static BACKEND_DISPLAY_NAME: Record<string, string>;
-    static get isActive(): boolean;
+    unhandledMessages: ServerMessage[];
+    conf: DevToolsConf;
     frontendStatus: ConnectionStatus;
     javaStatus: ConnectionStatus;
-    private root;
     componentPickActive: boolean;
+    private root;
     private javaConnection?;
     private frontendConnection?;
     private nextMessageId;
     private transitionDuration;
+
+    static get styles(): import("lit").CSSResult[];
+
+    static get isActive(): boolean;
+
     elementTelemetry(): void;
+
     openWebSocketConnection(): void;
+
     tabHandleMessage(tabElement: HTMLElement, message: ServerMessage): boolean;
+
     handleFrontendMessage(message: ServerMessage): void;
+
     handleHmrMessage(message: ServerMessage): boolean;
+
     getDedicatedWebSocketUrl(): string | undefined;
+
     getSpringBootWebSocketUrl(location: any): string;
+
     connectedCallback(): void;
+
     initPlugin(plugin: DevToolsPlugin): Promise<void>;
+
     format(o: any): string;
+
     checkLicense(productInfo: Product): void;
+
     setActive(yes: boolean): void;
+
     render(): import("lit-html").TemplateResult<1>;
+
     setJavaLiveReloadActive(active: boolean): void;
 }
+
 export {};
