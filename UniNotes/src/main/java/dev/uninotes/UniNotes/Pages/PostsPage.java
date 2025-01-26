@@ -5,7 +5,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Components.NavBar;
-import dev.uninotes.UniNotes.Components.PostComponent;
+import dev.uninotes.UniNotes.PostParts.PostComponent;
 import dev.uninotes.UniNotes.Components.PublishBar;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.Post;

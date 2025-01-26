@@ -1,6 +1,6 @@
 package dev.uninotes.UniNotes.Database;
 
-import dev.uninotes.UniNotes.Comment;
+import dev.uninotes.UniNotes.PostParts.Comment;
 import dev.uninotes.UniNotes.Note;
 import dev.uninotes.UniNotes.Post;
 import dev.uninotes.UniNotes.User.User;

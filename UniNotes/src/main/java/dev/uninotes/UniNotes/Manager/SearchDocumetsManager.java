@@ -1,4 +1,4 @@
-package dev.uninotes.UniNotes;
+package dev.uninotes.UniNotes.Manager;
 
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 

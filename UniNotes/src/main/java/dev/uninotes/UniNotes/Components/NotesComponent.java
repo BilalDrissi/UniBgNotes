@@ -10,7 +10,7 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
-import dev.uninotes.UniNotes.FileManager;
+import dev.uninotes.UniNotes.Manager.FileManager;
 import dev.uninotes.UniNotes.Note;
 
 import java.io.File;

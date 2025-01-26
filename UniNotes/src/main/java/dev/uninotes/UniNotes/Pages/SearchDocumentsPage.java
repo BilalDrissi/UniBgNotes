@@ -9,7 +9,7 @@ import dev.uninotes.UniNotes.Components.NavBar;
 import dev.uninotes.UniNotes.Components.NotesComponent;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.Note;
-import dev.uninotes.UniNotes.SearchDocumetsManager;
+import dev.uninotes.UniNotes.Manager.SearchDocumetsManager;
 import dev.uninotes.UniNotes.Utils.Utils;
 
 import java.util.List;

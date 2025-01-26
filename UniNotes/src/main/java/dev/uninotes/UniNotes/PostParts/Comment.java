@@ -1,4 +1,4 @@
-package dev.uninotes.UniNotes;
+package dev.uninotes.UniNotes.PostParts;
 
 import java.time.LocalDateTime;
 
