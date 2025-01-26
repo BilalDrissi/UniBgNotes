@@ -1,9 +1,9 @@
 package dev.uninotes.UniNotes.Utils;
 
 public class Session {
+    public static Session INSTANCE;
     private static int id = 0;
     private static boolean logged = false;
-    public static Session INSTANCE;
 
     private Session() {
         this.logged = false;

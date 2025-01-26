@@ -12,15 +12,7 @@ import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
-import dev.uninotes.UniNotes.User.User;
-import dev.uninotes.UniNotes.Utils.Session;
 import dev.uninotes.UniNotes.Utils.Utils;
-
-import javax.xml.transform.Result;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 @Route("login")
 public class LoginPage extends VerticalLayout {
@@ -49,15 +41,15 @@ public class LoginPage extends VerticalLayout {
 
 
             //if it is a mail and is valid
-            if(Utils.find(emailOrUsernameField.getValue(), '@') >= 0 && !Utils.isValidEmail(emailOrUsernameField.getValue())){
+            if (Utils.find(emailOrUsernameField.getValue(), '@') >= 0 && !Utils.isValidEmail(emailOrUsernameField.getValue())) {
                 Notification.show("You should enter a valid email", 5000, Notification.Position.MIDDLE);
                 return;
             }
 
 
-            if(DatabaseManager.validateUser(emailOrUsernameField.getValue(), passwordField.getValue())){
+            if (DatabaseManager.validateUser(emailOrUsernameField.getValue(), passwordField.getValue())) {
                 //there was an error getting the user infos
-                if(!Utils.userLoggedIn(emailOrUsernameField.getValue())) return;
+                if (!Utils.userLoggedIn(emailOrUsernameField.getValue())) return;
 
                 Notification.show("Login Successful", 5000, Notification.Position.MIDDLE);
 
@@ -90,7 +82,6 @@ public class LoginPage extends VerticalLayout {
                 .set("font-size", "14px")
                 .set("color", "#007BFF")
                 .set("text-decoration", "none");
-
 
 
         // Forgot Password link

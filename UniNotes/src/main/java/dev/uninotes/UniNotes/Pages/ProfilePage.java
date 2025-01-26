@@ -7,7 +7,6 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.upload.MultiFileReceiver;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Components.NavBar;
@@ -34,7 +33,7 @@ public class ProfilePage extends VerticalLayout {
         title.getStyle().set("font-size", "24px").set("font-weight", "bold");
 
         String img = (User.getInstance().getImage() != null) ? User.getInstance().getImage() : "";
-        Image profileImage = new Image( img , "Profile Picture");
+        Image profileImage = new Image(img, "Profile Picture");
         profileImage.setWidth("100px");
         profileImage.setHeight("100px");
         profileImage.getStyle()
@@ -119,8 +118,8 @@ public class ProfilePage extends VerticalLayout {
             String username = usernameField.getValue();
             String email = emailField.getValue();
 
-            if(!DatabaseManager
-                    .UPDATE_USER( User.getInstance().getId(), name, surname, email, username, imagePath)){
+            if (!DatabaseManager
+                    .UPDATE_USER(User.getInstance().getId(), name, surname, email, username, imagePath)) {
                 Notification.show("Error occured, retry later", 5000, Notification.Position.MIDDLE);
                 return;
             }
@@ -131,7 +130,7 @@ public class ProfilePage extends VerticalLayout {
             title.setText("Hello " + name);
         });
 
-        add(titleLayout, nameField, surnameField, usernameField, emailField,passwordManagerButton, uploadLabel, image, saveButton);
+        add(titleLayout, nameField, surnameField, usernameField, emailField, passwordManagerButton, uploadLabel, image, saveButton);
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
         setHeightFull();

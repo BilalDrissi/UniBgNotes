@@ -10,7 +10,6 @@ import dev.uninotes.UniNotes.Components.PublishBar;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.Post;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Route("posts")
@@ -78,7 +77,7 @@ public class PostsPage extends VerticalLayout {
         setFlexGrow(1, wrapper);
     }
 
-    private void displayPosts(){
+    private void displayPosts() {
         //limits the number of the posts displayed per time
         int limit = Math.min(loadedCount + 10, posts.size());
 
@@ -90,7 +89,7 @@ public class PostsPage extends VerticalLayout {
         loadedCount = limit;
     }
 
-    private void loadPosts(){
+    private void loadPosts() {
         posts = DatabaseManager.SELECT_POSTS();
     }
 }

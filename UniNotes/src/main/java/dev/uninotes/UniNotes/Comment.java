@@ -22,7 +22,9 @@ public class Comment {
         return text;
     }
 
-    public int getIdUser() { return id_user; }
+    public int getIdUser() {
+        return id_user;
+    }
 
     public String getImage() {
         return image;

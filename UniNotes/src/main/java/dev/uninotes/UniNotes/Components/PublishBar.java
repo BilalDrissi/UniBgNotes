@@ -6,8 +6,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.User.User;
 
-import javax.xml.crypto.Data;
-
 public class PublishBar extends HorizontalLayout {
 
     private TextField textField;

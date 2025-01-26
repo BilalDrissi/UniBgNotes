@@ -12,9 +12,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.Utils.Utils;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-
-import java.util.regex.Pattern;
 
 @Route("register")
 public class RegistrationPage extends VerticalLayout {
@@ -76,7 +73,7 @@ public class RegistrationPage extends VerticalLayout {
         setSizeFull();
     }
 
-    private void registeredAndLoggedIn(String email){
+    private void registeredAndLoggedIn(String email) {
         Utils.userLoggedIn(email);
         UI.getCurrent().navigate("home");
     }

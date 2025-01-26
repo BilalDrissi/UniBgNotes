@@ -9,16 +9,11 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.QueryParameters;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.VaadinRequest;
 import dev.uninotes.UniNotes.Components.NavBar;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
-import dev.uninotes.UniNotes.Post;
 import dev.uninotes.UniNotes.User.User;
 import dev.uninotes.UniNotes.Utils.Utils;
-
-import java.util.List;
 
 @Route("password-manager")
 public class PasswordManagePage extends VerticalLayout {
@@ -49,23 +44,21 @@ public class PasswordManagePage extends VerticalLayout {
             submitButton.addClickListener(e -> {
                 String email = emailField.getValue();
                 String newPassword = newPasswordField.getValue();
-                if(!newPassword.equals(confirmPasswordField.getValue())) {
+                if (!newPassword.equals(confirmPasswordField.getValue())) {
                     Notification.show("Passwords do not match");
                     return;
                 }
-                if(!Utils.validatePassword(newPassword)) {
+                if (!Utils.validatePassword(newPassword)) {
                     Notification.show("Password does not meet the requirements");
                     return;
                 }
                 newPassword = Utils.cryptPassword(newPassword);
                 boolean res = DatabaseManager.UPDATE_USER_PASSWORD(email, newPassword);
-                if(res){
+                if (res) {
                     Notification.show("Password changed successfully");
                     UI.getCurrent().getPage().setLocation("login");
                     return;
-                }
-
-                else
+                } else
                     Notification.show("Error, try again later");
             });
             submitButton.getStyle()
@@ -99,23 +92,22 @@ public class PasswordManagePage extends VerticalLayout {
             submitButton.addClickListener(e -> {
                 String oldPassword = oldPasswordField.getValue();
                 String newPassword = newPasswordField.getValue();
-                if(!newPassword.equals(confirmPasswordField.getValue())) {
+                if (!newPassword.equals(confirmPasswordField.getValue())) {
                     Notification.show("Passwords do not match");
                     return;
                 }
-                if(!Utils.validatePassword(newPassword)) {
+                if (!Utils.validatePassword(newPassword)) {
                     Notification.show("Password does not meet the requirements");
                     return;
                 }
                 oldPassword = Utils.cryptPassword(oldPassword);
                 newPassword = Utils.cryptPassword(newPassword);
                 boolean res = DatabaseManager.UPDATE_USER_PASSWORD(User.getInstance().getEmail(), newPassword, oldPassword);
-                if(res){
+                if (res) {
                     Notification.show("Password changed successfully");
                     UI.getCurrent().getPage().setLocation("login");
                     return;
-                }
-                else
+                } else
                     Notification.show("Error, the old password is incorrect");
             });
 

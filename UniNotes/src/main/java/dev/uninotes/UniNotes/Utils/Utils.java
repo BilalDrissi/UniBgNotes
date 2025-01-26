@@ -48,29 +48,29 @@ public class Utils {
         return null;
     }
 
-    public static void loggedIn(){
+    public static void loggedIn() {
         Session.getInstance().setLogged(true);
     }
 
-    public static void loggedOut(){
+    public static void loggedOut() {
         Session.getInstance().setLogged(false);
     }
 
-    public static boolean isLoggedIn(){
+    public static boolean isLoggedIn() {
         return Session.getInstance().isLogged();
     }
 
-    public static void redirectToLoginIfNotLoggedIn(){
-        if(!Session.getInstance().isLogged()){
+    public static void redirectToLoginIfNotLoggedIn() {
+        if (!Session.getInstance().isLogged()) {
             UI.getCurrent().getPage().setLocation("login");
             return;
         }
     }
 
-    public static boolean userLoggedIn(String emailOrUsernameField){
+    public static boolean userLoggedIn(String emailOrUsernameField) {
         Map<String, String> result = DatabaseManager.SELECT_USER(emailOrUsernameField);
 
-        if(result == null) return false;
+        if (result == null) return false;
 
         User.getInstance().init(
                 Integer.parseInt(result.get("id")),
@@ -85,18 +85,18 @@ public class Utils {
     }
 
     //returns the position of a char in a string
-    public static int find(String s, char c){
-        for(int i = 0; i < s.length(); i++){
-            if(s.charAt(i) == c) return i;
+    public static int find(String s, char c) {
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == c) return i;
         }
         return -1;
     }
 
-    public static LocalDateTime dateTimeFormatter(String dateTime){
+    public static LocalDateTime dateTimeFormatter(String dateTime) {
         return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
-    public static String getDefaultProfileImagePath(){
+    public static String getDefaultProfileImagePath() {
         return "images/default/user.jpg";
     }
 
@@ -109,7 +109,7 @@ public class Utils {
         return Paths.get(userHome, "Downloads");
     }
 
-    public static List<String> loadNoteTypes(){
+    public static List<String> loadNoteTypes() {
         return DatabaseManager.SELECT_NOTE_TYPES();
     }
 

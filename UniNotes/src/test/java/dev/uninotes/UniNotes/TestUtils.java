@@ -11,6 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestUtils {
 
+    @AfterAll
+    static void tearDown() {
+        System.out.println("All tests completed.");
+    }
+
     @Test
     @Order(1)
     void testIsValidEmail() {
@@ -95,10 +100,5 @@ public class TestUtils {
         List<String> noteTypes = Utils.loadNoteTypes();
         assertNotNull(noteTypes, "Note types should not be null");
         assertFalse(noteTypes.isEmpty(), "Note types should not be empty");
-    }
-
-    @AfterAll
-    static void tearDown() {
-        System.out.println("All tests completed.");
     }
 }

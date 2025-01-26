@@ -2,8 +2,6 @@ package dev.uninotes.UniNotes;
 
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class Post {
@@ -30,28 +28,38 @@ public class Post {
     public LocalDateTime getDateTime() {
         return dateTime;
     }
+
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
+
     public String getText() {
         return text;
     }
+
     public void setText(String text) {
         this.text = text;
     }
+
     public int getIdPost() {
         return id_post;
     }
+
     public void setIdPost(int id_post) {
         this.id_post = id_post;
     }
+
     public String getUsernameOfPost() {
         return user.getUsername();
     }
+
     public int getIdPostOwner() {
         return user.getId();
     }
-    public String getOwnerProfileImage() { return user.getImage(); }
+
+    public String getOwnerProfileImage() {
+        return user.getImage();
+    }
 
 
     //saves mainly infos for the owner of the post

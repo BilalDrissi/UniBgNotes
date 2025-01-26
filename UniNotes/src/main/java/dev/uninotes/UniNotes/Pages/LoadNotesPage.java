@@ -84,7 +84,6 @@ public class LoadNotesPage extends VerticalLayout {
         });
 
 
-
         // File upload component
         Span uploadLabel = new Span("Upload your notes:");
         Upload notesUpload = new Upload((MultiFileReceiver) (fileName, mimeType) -> {

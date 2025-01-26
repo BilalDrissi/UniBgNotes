@@ -3,7 +3,7 @@ package dev.uninotes.UniNotes.User;
 import dev.uninotes.UniNotes.Utils.Utils;
 
 public class User {
-    
+
     private static User INSTANCE;
     private String username;
     private String email;
@@ -17,8 +17,8 @@ public class User {
         this.username = "";
         this.email = "";
     }
-    
-    public static synchronized User getInstance() { 
+
+    public static synchronized User getInstance() {
         if (INSTANCE == null) {
             INSTANCE = new User();
         }
@@ -36,15 +36,15 @@ public class User {
     }
 
     public void update(int id, String username, String email, String name, String surname, String image) {
-        if(username != null && username != "")
+        if (username != null && username != "")
             this.username = username;
-        if(email != null && email != "")
+        if (email != null && email != "")
             this.email = email;
-        if(name != null && name != "")
+        if (name != null && name != "")
             this.name = name;
-        if(surname != null && surname != "")
+        if (surname != null && surname != "")
             this.surname = surname;
-        if(image != null && image != "")
+        if (image != null && image != "")
             this.image = image;
     }
 
@@ -68,7 +68,11 @@ public class User {
         return surname;
     }
 
-    public String getImage() { return image; }
+    public String getImage() {
+        return image;
+    }
 
-    public void setImage(String image) { this.image = image; }
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

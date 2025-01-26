@@ -5,7 +5,7 @@ import dev.uninotes.UniNotes.Utils.Utils;
 import java.time.LocalDateTime;
 
 public class Note {
-    int id,idUser,idPost;
+    int id, idUser, idPost;
     String path, description, course, type;
     LocalDateTime dateTime;
 
@@ -35,16 +35,20 @@ public class Note {
     public int getId() {
         return id;
     }
+
     public int getIdUser() {
         return idUser;
     }
+
     public int getIdPost() {
 
         return idPost;
     }
+
     public String getPath() {
         return path;
     }
+
     public String getDescription() {
         return description;
     }
