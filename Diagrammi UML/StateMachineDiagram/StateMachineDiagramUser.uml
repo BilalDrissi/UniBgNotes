@@ -15,8 +15,8 @@
       <transition xmi:type="uml:Transition" xmi:id="_iXpP8NBFEe-bgtsZ8Qd5kA" name="Password retry" kind="local" source="_a4pkQNBEEe-bgtsZ8Qd5kA" target="_Hr1xINBEEe-bgtsZ8Qd5kA"/>
       <transition xmi:type="uml:Transition" xmi:id="_3yeZ0NBFEe-bgtsZ8Qd5kA" name="Incorrect password or username or Invalid email" source="_POMkwNBDEe-bgtsZ8Qd5kA" target="_qgu28NBFEe-bgtsZ8Qd5kA"/>
       <transition xmi:type="uml:Transition" xmi:id="_IqrtENBGEe-bgtsZ8Qd5kA" name="Login retry" source="_qgu28NBFEe-bgtsZ8Qd5kA" target="_POMkwNBDEe-bgtsZ8Qd5kA"/>
-      <transition xmi:type="uml:Transition" xmi:id="_t25sENBGEe-bgtsZ8Qd5kA" name="Successfully Registered" source="_Hr1xINBEEe-bgtsZ8Qd5kA" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
-      <transition xmi:type="uml:Transition" xmi:id="_1x6a0NBGEe-bgtsZ8Qd5kA" name="Successfully Logged In" source="_POMkwNBDEe-bgtsZ8Qd5kA" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_t25sENBGEe-bgtsZ8Qd5kA" name="Successfully Registered" source="_Hr1xINBEEe-bgtsZ8Qd5kA" target="_POMkwNBDEe-bgtsZ8Qd5kA"/>
+      <transition xmi:type="uml:Transition" xmi:id="_1x6a0NBGEe-bgtsZ8Qd5kA" name="Successfully Logged In" source="_POMkwNBDEe-bgtsZ8Qd5kA" target="_EMaVcNELEe-vff-ua2-F6A"/>
       <transition xmi:type="uml:Transition" xmi:id="_3l1rkNC_Ee-vff-ua2-F6A" source="_1Bhi4NBKEe-bgtsZ8Qd5kA" target="_w5sjsNC_Ee-vff-ua2-F6A"/>
       <transition xmi:type="uml:Transition" xmi:id="_b85IENELEe-vff-ua2-F6A" source="_YNiksNBLEe-bgtsZ8Qd5kA" target="_EMaVcNELEe-vff-ua2-F6A"/>
       <transition xmi:type="uml:Transition" xmi:id="_qTKtQNEPEe-vff-ua2-F6A" source="_Zy9DQNEPEe-vff-ua2-F6A" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
@@ -28,6 +28,9 @@
       <transition xmi:type="uml:Transition" xmi:id="_5T1TQNETEe-vff-ua2-F6A" source="_tGho4NETEe-vff-ua2-F6A" target="_w5sjsNC_Ee-vff-ua2-F6A"/>
       <transition xmi:type="uml:Transition" xmi:id="_0askoNEUEe-vff-ua2-F6A" source="_EY_p0NEUEe-vff-ua2-F6A" target="_pIHowNBGEe-bgtsZ8Qd5kA"/>
       <transition xmi:type="uml:Transition" xmi:id="_hyVs8NEVEe-vff-ua2-F6A" source="_QNbEsNEVEe-vff-ua2-F6A" target="_EMaVcNELEe-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_YBM0gN3CEe-ABuT52agYNw" source="_7GAmENEUEe-vff-ua2-F6A" target="_z75iENEPEe-vff-ua2-F6A"/>
+      <transition xmi:type="uml:Transition" xmi:id="_nbSugN3DEe-ABuT52agYNw" source="_Zzv6wN3DEe-ABuT52agYNw" target="_kmnncN3DEe-ABuT52agYNw"/>
+      <transition xmi:type="uml:Transition" xmi:id="_tkx1QN3DEe-ABuT52agYNw" source="_kmnncN3DEe-ABuT52agYNw" target="_OCRIoND9Ee-vff-ua2-F6A"/>
       <subvertex xmi:type="uml:Pseudostate" xmi:id="_JYDtQNBCEe-bgtsZ8Qd5kA" name=""/>
       <subvertex xmi:type="uml:State" xmi:id="_POMkwNBDEe-bgtsZ8Qd5kA" name="Login">
         <doActivity xmi:type="uml:Activity" xmi:id="_btwcwNBDEe-bgtsZ8Qd5kA" name="Inserisci email o username e password"/>
@@ -75,6 +78,8 @@
         <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_EY_p0NEUEe-vff-ua2-F6A" kind="exitPoint"/>
         <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_7GAmENEUEe-vff-ua2-F6A" kind="exitPoint"/>
         <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_QNbEsNEVEe-vff-ua2-F6A" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_Zzv6wN3DEe-ABuT52agYNw" name="" kind="exitPoint"/>
+        <connectionPoint xmi:type="uml:Pseudostate" xmi:id="_kmnncN3DEe-ABuT52agYNw" name="" kind="entryPoint"/>
         <region xmi:type="uml:Region" xmi:id="_1hDJUNC_Ee-vff-ua2-F6A" name="Region1">
           <transition xmi:type="uml:Transition" xmi:id="_YIvCUND9Ee-vff-ua2-F6A" name="Enter description" source="_OCRIoND9Ee-vff-ua2-F6A" target="_UmXu0ND9Ee-vff-ua2-F6A"/>
           <transition xmi:type="uml:Transition" xmi:id="_p2NJoND9Ee-vff-ua2-F6A" name="Select Field" source="_OCRIoND9Ee-vff-ua2-F6A" target="_liSdYND9Ee-vff-ua2-F6A"/>
@@ -91,6 +96,9 @@
           <transition xmi:type="uml:Transition" xmi:id="_GTu4MNEUEe-vff-ua2-F6A" name="Click on Profile" source="_OCRIoND9Ee-vff-ua2-F6A" target="_EY_p0NEUEe-vff-ua2-F6A"/>
           <transition xmi:type="uml:Transition" xmi:id="_-GKkYNEUEe-vff-ua2-F6A" name="Click on Research" source="_OCRIoND9Ee-vff-ua2-F6A" target="_7GAmENEUEe-vff-ua2-F6A"/>
           <transition xmi:type="uml:Transition" xmi:id="_SMwfMNEVEe-vff-ua2-F6A" name="Click on Forum" source="_OCRIoND9Ee-vff-ua2-F6A" target="_QNbEsNEVEe-vff-ua2-F6A"/>
+          <transition xmi:type="uml:Transition" xmi:id="_uKaHUN3CEe-ABuT52agYNw" name="Select Note Type" source="_OCRIoND9Ee-vff-ua2-F6A" target="_pumDUN3CEe-ABuT52agYNw"/>
+          <transition xmi:type="uml:Transition" xmi:id="_BTMWEN3DEe-ABuT52agYNw" name="Error" source="_pIJTUNEJEe-vff-ua2-F6A" target="_5twOsN3CEe-ABuT52agYNw"/>
+          <transition xmi:type="uml:Transition" xmi:id="_c5lqUN3DEe-ABuT52agYNw" source="_5twOsN3CEe-ABuT52agYNw" target="_Zzv6wN3DEe-ABuT52agYNw"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_GLYr8ND9Ee-vff-ua2-F6A" name=""/>
           <subvertex xmi:type="uml:State" xmi:id="_OCRIoND9Ee-vff-ua2-F6A" name="Main Page"/>
           <subvertex xmi:type="uml:State" xmi:id="_UmXu0ND9Ee-vff-ua2-F6A" name="Description"/>
@@ -99,6 +107,8 @@
           <subvertex xmi:type="uml:State" xmi:id="_Dtge0ND-Ee-vff-ua2-F6A" name="File Upload"/>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_mzatENEIEe-vff-ua2-F6A" kind="join"/>
           <subvertex xmi:type="uml:State" xmi:id="_pIJTUNEJEe-vff-ua2-F6A" name="Document Uploaded"/>
+          <subvertex xmi:type="uml:State" xmi:id="_pumDUN3CEe-ABuT52agYNw" name="Note Type"/>
+          <subvertex xmi:type="uml:State" xmi:id="_5twOsN3CEe-ABuT52agYNw" name="Display Error"/>
         </region>
       </subvertex>
       <subvertex xmi:type="uml:State" xmi:id="_EMaVcNELEe-vff-ua2-F6A" name="Forum">

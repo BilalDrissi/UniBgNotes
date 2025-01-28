@@ -42,5 +42,12 @@
       <packagedElement xmi:type="uml:Dependency" xmi:id="_1iiC4NZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_NI0poNZXEe--tN2JSsjSWA"/>
       <packagedElement xmi:type="uml:Dependency" xmi:id="_4fIW4NZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_7HsnsN3DEe-ABuT52agYNw" name="Manager">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_RE3poN3EEe-ABuT52agYNw" name="import" client="_7HsnsN3DEe-ABuT52agYNw" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_8c1OoN3DEe-ABuT52agYNw" name="Post Parts">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_FBv2AN3EEe-ABuT52agYNw" name="import" client="_8c1OoN3DEe-ABuT52agYNw" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_Kq9hQN3EEe-ABuT52agYNw" name="import" client="_8c1OoN3DEe-ABuT52agYNw" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
   </packagedElement>
 </uml:Model>
