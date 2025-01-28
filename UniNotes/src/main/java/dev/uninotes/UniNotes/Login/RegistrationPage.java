@@ -48,6 +48,12 @@ public class RegistrationPage extends VerticalLayout {
                 return;
             }
 
+            // if the mail does not meet the requirements
+            if(!Utils.isValidEmail(email)){
+                Notification.show("You should enter a valid email", 5000, Notification.Position.MIDDLE);
+                return;
+            }
+
             // if passwords are not the same it stops the registration
             if (!password.equals(confirmPassword)) {
                 Notification.show("Passwords do not match!", 3000, Notification.Position.MIDDLE);
@@ -75,6 +81,6 @@ public class RegistrationPage extends VerticalLayout {
 
     private void registeredAndLoggedIn(String email) {
         Utils.userLoggedIn(email);
-        UI.getCurrent().navigate("home");
+        UI.getCurrent().navigate("login");
     }
 }

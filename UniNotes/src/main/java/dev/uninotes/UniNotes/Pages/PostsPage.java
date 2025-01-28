@@ -85,6 +85,7 @@ public class PostsPage extends VerticalLayout {
             Post p = posts.get(i);
             postsLayout.add(new PostComponent(p.getIdPost(), p.getUsernameOfPost(), p.getOwnerProfileImage(), p.getText(), p.getDateTime()));
         }
+
         //the next time it will load the next posts
         loadedCount = limit;
     }
