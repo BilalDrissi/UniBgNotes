@@ -27,7 +27,7 @@
           <layoutConstraint xmi:type="notation:Location" xmi:id="_2nlFVd4tEe-0j-Zx7Jr7UQ" y="15"/>
         </children>
         <element xmi:type="uml:InitialNode" href="ActivityDiagram_VEW.uml#_2nipEN4tEe-0j-Zx7Jr7UQ"/>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2nlFUd4tEe-0j-Zx7Jr7UQ" x="48" y="96"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2nlFUd4tEe-0j-Zx7Jr7UQ" x="55" y="108"/>
       </children>
       <children xmi:type="notation:Shape" xmi:id="_4z0TYN4tEe-0j-Zx7Jr7UQ" type="MergeNode_Shape">
         <children xmi:type="notation:DecorationNode" xmi:id="_4z0TYt4tEe-0j-Zx7Jr7UQ" type="MergeNode_FloatingNameLabel">
@@ -252,16 +252,20 @@
   <element xmi:type="uml:Activity" href="ActivityDiagram_VEW.uml#_h2v6sN4tEe-0j-Zx7Jr7UQ"/>
   <edges xmi:type="notation:Connector" xmi:id="_6ihQ4N4tEe-0j-Zx7Jr7UQ" type="ControlFlow_Edge" source="_2nlFUN4tEe-0j-Zx7Jr7UQ" target="_4z0TYN4tEe-0j-Zx7Jr7UQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_6ijGEN4tEe-0j-Zx7Jr7UQ" type="ControlFlow_NameLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ijGEd4tEe-0j-Zx7Jr7UQ" y="20"/>
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_Gfm64N5jEe-dnPscczXsJA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ijGEd4tEe-0j-Zx7Jr7UQ" x="-18" y="19"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_6ijGEt4tEe-0j-Zx7Jr7UQ" type="ControlFlow_WeightLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ijGE94tEe-0j-Zx7Jr7UQ" y="20"/>
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_Gf1kYN5jEe-dnPscczXsJA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ijGE94tEe-0j-Zx7Jr7UQ" x="-1" y="19"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_6ijGFN4tEe-0j-Zx7Jr7UQ" type="ControlFlow_GuardLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ijGFd4tEe-0j-Zx7Jr7UQ" y="20"/>
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_GgC_wN5jEe-dnPscczXsJA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ijGFd4tEe-0j-Zx7Jr7UQ" x="15" y="18"/>
     </children>
     <children xmi:type="notation:DecorationNode" xmi:id="_6ijGFt4tEe-0j-Zx7Jr7UQ" type="ControlFlow_StereotypeLabel">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ijGF94tEe-0j-Zx7Jr7UQ" y="-20"/>
+      <styles xmi:type="notation:BooleanValueStyle" xmi:id="_GgRCMN5jEe-dnPscczXsJA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ijGF94tEe-0j-Zx7Jr7UQ" x="2" y="-17"/>
     </children>
     <styles xmi:type="notation:FontStyle" xmi:id="_6ihQ4d4tEe-0j-Zx7Jr7UQ"/>
     <element xmi:type="uml:ControlFlow" href="ActivityDiagram_VEW.uml#_6ibKQN4tEe-0j-Zx7Jr7UQ"/>
