@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_cQucYN7oEe-buajYH-tWAw" name="ComunicationDiagram_ITW">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_cRClcN7oEe-buajYH-tWAw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_cQzU4N7oEe-buajYH-tWAw" name="ComunicationDiagram_ITW">
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_eJLy0N7oEe-buajYH-tWAw" name="User" coveredBy="_gsjHcN7oEe-buajYH-tWAw _i_5DEd7oEe-buajYH-tWAw _mcshId7oEe-buajYH-tWAw _v7Sigd7oEe-buajYH-tWAw _zUeE0d7oEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_evuOYN7oEe-buajYH-tWAw" name="Site" coveredBy="_gsjHcd7oEe-buajYH-tWAw _i_5DEt7oEe-buajYH-tWAw _mcshIt7oEe-buajYH-tWAw _olbvQN7oEe-buajYH-tWAw _r0NYYd7oEe-buajYH-tWAw _v7SigN7oEe-buajYH-tWAw _zUeE0N7oEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_fUE4oN7oEe-buajYH-tWAw" name="Database" coveredBy="_olbvQd7oEe-buajYH-tWAw _r0NYYt7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gsjHcN7oEe-buajYH-tWAw" name="Message4SendEvent" covered="_eJLy0N7oEe-buajYH-tWAw" message="_gsigYN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_gsjHcd7oEe-buajYH-tWAw" name="Message4ReceiveEvent" covered="_evuOYN7oEe-buajYH-tWAw" message="_gsigYN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_i_5DEd7oEe-buajYH-tWAw" name="Message7SendEvent" covered="_eJLy0N7oEe-buajYH-tWAw" message="_i_5DEN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_i_5DEt7oEe-buajYH-tWAw" name="Message7ReceiveEvent" covered="_evuOYN7oEe-buajYH-tWAw" message="_i_5DEN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_mcshId7oEe-buajYH-tWAw" name="Message10SendEvent" covered="_eJLy0N7oEe-buajYH-tWAw" message="_mcshIN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_mcshIt7oEe-buajYH-tWAw" name="Message10ReceiveEvent" covered="_evuOYN7oEe-buajYH-tWAw" message="_mcshIN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_olbvQN7oEe-buajYH-tWAw" name="Message13SendEvent" covered="_evuOYN7oEe-buajYH-tWAw" message="_olbIMN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_olbvQd7oEe-buajYH-tWAw" name="Message13ReceiveEvent" covered="_fUE4oN7oEe-buajYH-tWAw" message="_olbIMN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r0NYYd7oEe-buajYH-tWAw" name="Message16SendEvent" covered="_evuOYN7oEe-buajYH-tWAw" message="_r0NYYN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r0NYYt7oEe-buajYH-tWAw" name="Message16ReceiveEvent" covered="_fUE4oN7oEe-buajYH-tWAw" message="_r0NYYN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_v7SigN7oEe-buajYH-tWAw" name="Message19SendEvent" covered="_evuOYN7oEe-buajYH-tWAw" message="_v7R7cN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_v7Sigd7oEe-buajYH-tWAw" name="Message19ReceiveEvent" covered="_eJLy0N7oEe-buajYH-tWAw" message="_v7R7cN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zUeE0N7oEe-buajYH-tWAw" name="Message22SendEvent" covered="_evuOYN7oEe-buajYH-tWAw" message="_zUddwN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_zUeE0d7oEe-buajYH-tWAw" name="Message22ReceiveEvent" covered="_eJLy0N7oEe-buajYH-tWAw" message="_zUddwN7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_gsigYN7oEe-buajYH-tWAw" name="1:selectTweet()" messageSort="asynchCall" receiveEvent="_gsjHcd7oEe-buajYH-tWAw" sendEvent="_gsjHcN7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_i_5DEN7oEe-buajYH-tWAw" name="2:insComment()" messageSort="asynchCall" receiveEvent="_i_5DEt7oEe-buajYH-tWAw" sendEvent="_i_5DEd7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_mcshIN7oEe-buajYH-tWAw" name="2.1:insFile()" messageSort="asynchCall" receiveEvent="_mcshIt7oEe-buajYH-tWAw" sendEvent="_mcshId7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_olbIMN7oEe-buajYH-tWAw" name="1.1:takeTweet()" messageSort="asynchCall" receiveEvent="_olbvQd7oEe-buajYH-tWAw" sendEvent="_olbvQN7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_r0NYYN7oEe-buajYH-tWAw" name="3:insert()" messageSort="asynchCall" receiveEvent="_r0NYYt7oEe-buajYH-tWAw" sendEvent="_r0NYYd7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_v7R7cN7oEe-buajYH-tWAw" name="3.1:confirmMsg()" messageSort="asynchCall" receiveEvent="_v7Sigd7oEe-buajYH-tWAw" sendEvent="_v7SigN7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_zUddwN7oEe-buajYH-tWAw" name="4:errorMsg()" messageSort="asynchCall" receiveEvent="_zUeE0d7oEe-buajYH-tWAw" sendEvent="_zUeE0N7oEe-buajYH-tWAw"/>
+  </packagedElement>
+</uml:Model>

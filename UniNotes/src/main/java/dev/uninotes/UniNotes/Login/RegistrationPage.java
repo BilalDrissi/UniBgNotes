@@ -12,9 +12,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.Utils.Utils;
-import org.springframework.security.crypto.bcrypt.BCrypt;
-
-import java.util.regex.Pattern;
 
 @Route("register")
 public class RegistrationPage extends VerticalLayout {
@@ -46,8 +43,14 @@ public class RegistrationPage extends VerticalLayout {
             String confirmPassword = confirmPasswordField.getValue();
 
             // if the password does not get validated
-            if (!validatePassword(password)) {
+            if (!Utils.validatePassword(password)) {
                 Notification.show("Password must be at least 8 characters long, include a number, a special character, and an uppercase letter.", 5000, Notification.Position.MIDDLE);
+                return;
+            }
+
+            // if the mail does not meet the requirements
+            if(!Utils.isValidEmail(email)){
+                Notification.show("You should enter a valid email", 5000, Notification.Position.MIDDLE);
                 return;
             }
 
@@ -76,13 +79,8 @@ public class RegistrationPage extends VerticalLayout {
         setSizeFull();
     }
 
-    private boolean validatePassword(String password) {
-        String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$";
-        return Pattern.matches(passwordPattern, password);
-    }
-
-    private void registeredAndLoggedIn(String email){
+    private void registeredAndLoggedIn(String email) {
         Utils.userLoggedIn(email);
-        UI.getCurrent().navigate("home");
+        UI.getCurrent().navigate("login");
     }
 }

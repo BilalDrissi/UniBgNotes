@@ -3,6 +3,8 @@ package dev.uninotes.UniNotes.Components;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import dev.uninotes.UniNotes.Database.DatabaseManager;
+import dev.uninotes.UniNotes.User.User;
 
 public class PublishBar extends HorizontalLayout {
 
@@ -20,6 +22,7 @@ public class PublishBar extends HorizontalLayout {
         publishButton.addClickListener(e -> {
             String text = textField.getValue();
             if (!text.trim().isEmpty()) {
+                DatabaseManager.INSERT_POST(text, User.getInstance().getId());
                 System.out.println("Published: " + text);
                 textField.clear();
             } else {

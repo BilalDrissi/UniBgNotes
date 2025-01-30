@@ -1,4 +1,4 @@
-package dev.uninotes.UniNotes;
+package dev.uninotes.UniNotes.Pages;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Image;
@@ -7,15 +7,16 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.upload.MultiFileReceiver;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.router.Route;
 import dev.uninotes.UniNotes.Components.NavBar;
 import dev.uninotes.UniNotes.Database.DatabaseManager;
 import dev.uninotes.UniNotes.User.User;
+import dev.uninotes.UniNotes.Utils.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 @Route("profile")
 public class ProfilePage extends VerticalLayout {
@@ -24,12 +25,15 @@ public class ProfilePage extends VerticalLayout {
 
     public ProfilePage() {
 
+        Utils.redirectToLoginIfNotLoggedIn();
+
         add(new NavBar());
 
         Span title = new Span("Hello " + ((User.getInstance().getName() != null) ? User.getInstance().getName() : "user"));
         title.getStyle().set("font-size", "24px").set("font-weight", "bold");
 
-        Image profileImage = new Image( (User.getInstance().getImage() != null) ? User.getInstance().getImage() : "", "Profile Picture");
+        String img = (User.getInstance().getImage() != null) ? User.getInstance().getImage() : "";
+        Image profileImage = new Image(img, "Profile Picture");
         profileImage.setWidth("100px");
         profileImage.setHeight("100px");
         profileImage.getStyle()
@@ -62,15 +66,17 @@ public class ProfilePage extends VerticalLayout {
         Span uploadLabel = new Span("Upload profile picture:");
         Upload image = new Upload((fileName, mimeType) -> {
             try {
-                // Ensure the directory exists
-                File tempFile = new File("./src/main/images/profile/" + fileName);
+                String uploadPath = "src/main/resources/static/images/profile/" + User.getInstance().getId() + "/profileImage/" + fileName;
+                imagePath = "/images/profile/" + User.getInstance().getId() + "/profileImage/" + fileName;
+                File tempFile = new File(uploadPath);
                 tempFile.getParentFile().mkdirs();
                 return new FileOutputStream(tempFile);
-            } catch (Exception e) {
+            } catch (IOException e) {
                 Notification.show("Error uploading file: " + e.getMessage(), 5000, Notification.Position.MIDDLE);
                 return null;
             }
         });
+
 
         // can upload only 1 photo
         image.setMaxFiles(1);
@@ -80,18 +86,30 @@ public class ProfilePage extends VerticalLayout {
         });
 
         image.addSucceededListener(event -> {
-
             if (event.getMIMEType().startsWith("image/")) {
-                String imagePath = "./src/main/images/profile/" + event.getFileName();
-                profileImage.setSrc(imagePath); // update the image in the upper part
+                profileImage.setSrc(imagePath + "?t=" + System.currentTimeMillis());
                 Notification.show("File uploaded: " + event.getFileName(), 3000, Notification.Position.BOTTOM_CENTER);
             } else {
                 Notification.show("The uploaded file is not a valid image.", 5000, Notification.Position.MIDDLE);
             }
         });
 
+
         image.setDropAllowed(true);
         image.setWidth("300px");
+
+
+        Button passwordManagerButton = new Button("Manage Password", event ->
+                getUI().ifPresent(ui -> ui.navigate("password-manager"))
+        );
+        passwordManagerButton.getStyle()
+                .set("background-color", "#FF5722")
+                .set("color", "white")
+                .set("border", "none")
+                .set("padding", "10px 20px")
+                .set("border-radius", "5px")
+                .set("cursor", "pointer");
+
 
         // Save button
         Button saveButton = new Button("Save", event -> {
@@ -100,8 +118,8 @@ public class ProfilePage extends VerticalLayout {
             String username = usernameField.getValue();
             String email = emailField.getValue();
 
-            if(!DatabaseManager
-                    .UPDATE_USER( User.getInstance().getId(), name, surname, email, username, imagePath)){
+            if (!DatabaseManager
+                    .UPDATE_USER(User.getInstance().getId(), name, surname, email, username, imagePath)) {
                 Notification.show("Error occured, retry later", 5000, Notification.Position.MIDDLE);
                 return;
             }
@@ -109,10 +127,10 @@ public class ProfilePage extends VerticalLayout {
             Notification.show("Profile updated successfully!", 3000, Notification.Position.MIDDLE);
 
             //updates the username in the title
-            title.setTitle("Hello " + username);
+            title.setText("Hello " + name);
         });
 
-        add(titleLayout, nameField, surnameField, usernameField, emailField, uploadLabel, image, saveButton);
+        add(titleLayout, nameField, surnameField, usernameField, emailField, passwordManagerButton, uploadLabel, image, saveButton);
         setAlignItems(Alignment.CENTER);
         setJustifyContentMode(JustifyContentMode.CENTER);
         setHeightFull();

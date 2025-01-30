@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_5eVbgN7nEe-buajYH-tWAw" name="ComunicationDiagram_CTW">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_5ew5UN7nEe-buajYH-tWAw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_5eZF4N7nEe-buajYH-tWAw" name="ComunicationDiagram_CTW">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_ReNVAN7oEe-buajYH-tWAw">
+      <body>N1: see SequenceDiagram_CTW&#xD;
+</body>
+    </ownedComment>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_F697UN7oEe-buajYH-tWAw" name="" type="_5eZF4N7nEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_7RrBYN7nEe-buajYH-tWAw" name="User" coveredBy="_-2snUd7nEe-buajYH-tWAw _J2mDYN7oEe-buajYH-tWAw _M_Lk8t7oEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_8Ai5kN7nEe-buajYH-tWAw" name="Site" coveredBy="_-2tOYN7nEe-buajYH-tWAw _HLtKcN7oEe-buajYH-tWAw _J2lcUd7oEe-buajYH-tWAw _M_Lk8d7oEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_9JOY4N7nEe-buajYH-tWAw" name="Database" coveredBy="_HLtKcd7oEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_F69UQN7oEe-buajYH-tWAw" name="" represents="_F697UN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-2snUd7nEe-buajYH-tWAw" name="Message4SendEvent" covered="_7RrBYN7nEe-buajYH-tWAw" message="_-2snUN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_-2tOYN7nEe-buajYH-tWAw" name="Message4ReceiveEvent" covered="_8Ai5kN7nEe-buajYH-tWAw" message="_-2snUN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_HLtKcN7oEe-buajYH-tWAw" name="Message10SendEvent" covered="_8Ai5kN7nEe-buajYH-tWAw" message="_HLsjYN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_HLtKcd7oEe-buajYH-tWAw" name="Message10ReceiveEvent" covered="_9JOY4N7nEe-buajYH-tWAw" message="_HLsjYN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_J2lcUd7oEe-buajYH-tWAw" name="Message13SendEvent" covered="_8Ai5kN7nEe-buajYH-tWAw" message="_J2lcUN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_J2mDYN7oEe-buajYH-tWAw" name="Message13ReceiveEvent" covered="_7RrBYN7nEe-buajYH-tWAw" message="_J2lcUN7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_M_Lk8d7oEe-buajYH-tWAw" name="Message16SendEvent" covered="_8Ai5kN7nEe-buajYH-tWAw" message="_M_Lk8N7oEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_M_Lk8t7oEe-buajYH-tWAw" name="Message16ReceiveEvent" covered="_7RrBYN7nEe-buajYH-tWAw" message="_M_Lk8N7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_-2snUN7nEe-buajYH-tWAw" name="1:createTweet()" messageSort="asynchCall" receiveEvent="_-2tOYN7nEe-buajYH-tWAw" sendEvent="_-2snUd7nEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_D540YN7oEe-buajYH-tWAw" name="2:N1"/>
+    <message xmi:type="uml:Message" xmi:id="_HLsjYN7oEe-buajYH-tWAw" name="3:load()" messageSort="asynchCall" receiveEvent="_HLtKcd7oEe-buajYH-tWAw" sendEvent="_HLtKcN7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_J2lcUN7oEe-buajYH-tWAw" name="3.1:confirm()" messageSort="asynchCall" receiveEvent="_J2mDYN7oEe-buajYH-tWAw" sendEvent="_J2lcUd7oEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_M_Lk8N7oEe-buajYH-tWAw" name="4:error()" messageSort="asynchCall" receiveEvent="_M_Lk8t7oEe-buajYH-tWAw" sendEvent="_M_Lk8d7oEe-buajYH-tWAw"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_AqfgN97oEe-buajYH-tWAw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_AqfgON7oEe-buajYH-tWAw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>

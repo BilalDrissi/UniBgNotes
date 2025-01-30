@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_CfXNENZWEe--tN2JSsjSWA" name="PackageDiagram">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_ChrhQNZWEe--tN2JSsjSWA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Model" xmi:id="_Eyr6kNZWEe--tN2JSsjSWA" name="UniBgNotes">
+    <packagedElement xmi:type="uml:Package" xmi:id="_G7ztwNZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_f0I5QNZXEe--tN2JSsjSWA" name="import" client="_G7ztwNZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_kiFPENZXEe--tN2JSsjSWA" name="import" client="_G7ztwNZXEe--tN2JSsjSWA" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_J7CfANZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Database">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_AXBgMNZZEe--tN2JSsjSWA" name="import" client="_J7CfANZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_EIiqANZZEe--tN2JSsjSWA" name="import" client="_J7CfANZXEe--tN2JSsjSWA" supplier="_NI0poNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_JOLuINZZEe--tN2JSsjSWA" name="import" client="_J7CfANZXEe--tN2JSsjSWA" supplier="_G7ztwNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_NI0poNZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.User">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_OArh4NZbEe--tN2JSsjSWA" name="import" client="_NI0poNZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_QcTzoNZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Pages">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_OO5ZgNZaEe--tN2JSsjSWA" name="import" client="_QcTzoNZXEe--tN2JSsjSWA" supplier="_G7ztwNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_Uzl1kNZaEe--tN2JSsjSWA" name="import" client="_QcTzoNZXEe--tN2JSsjSWA" supplier="_NI0poNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_1ON4YNZbEe--tN2JSsjSWA" name="import" client="_QcTzoNZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_y-u3INZdEe--tN2JSsjSWA" name="import" client="_QcTzoNZXEe--tN2JSsjSWA" supplier="_dHzO0NZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_YsSBkNZeEe--tN2JSsjSWA" name="import" client="_QcTzoNZXEe--tN2JSsjSWA" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_UO8XwNZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Utils">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_PDpssNZZEe--tN2JSsjSWA" name="import" client="_UO8XwNZXEe--tN2JSsjSWA" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_WdnR8NZbEe--tN2JSsjSWA" name="import" client="_UO8XwNZXEe--tN2JSsjSWA" supplier="_NI0poNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_WvTbsNZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Login">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_kgQ_QNZZEe--tN2JSsjSWA" name="import" client="_WvTbsNZXEe--tN2JSsjSWA" supplier="_NI0poNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_qJMWoNZZEe--tN2JSsjSWA" name="import" client="_WvTbsNZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_H3ytgNZaEe--tN2JSsjSWA" name="import" client="_WvTbsNZXEe--tN2JSsjSWA" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_YLoPwNZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Validators">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_rMpCkNZXEe--tN2JSsjSWA" name="Needs" client="_YLoPwNZXEe--tN2JSsjSWA" supplier="_ZwacQNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_ZwacQNZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Exceptions"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_dHzO0NZXEe--tN2JSsjSWA" name="dev.uninotes.UniNotes.Components">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_HjrJkNZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_G7ztwNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_d_2bsNZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_1iiC4NZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_NI0poNZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_4fIW4NZYEe--tN2JSsjSWA" name="import" client="_dHzO0NZXEe--tN2JSsjSWA" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_7HsnsN3DEe-ABuT52agYNw" name="Manager">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_RE3poN3EEe-ABuT52agYNw" name="import" client="_7HsnsN3DEe-ABuT52agYNw" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_8c1OoN3DEe-ABuT52agYNw" name="Post Parts">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_FBv2AN3EEe-ABuT52agYNw" name="import" client="_8c1OoN3DEe-ABuT52agYNw" supplier="_J7CfANZXEe--tN2JSsjSWA"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_Kq9hQN3EEe-ABuT52agYNw" name="import" client="_8c1OoN3DEe-ABuT52agYNw" supplier="_UO8XwNZXEe--tN2JSsjSWA"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
