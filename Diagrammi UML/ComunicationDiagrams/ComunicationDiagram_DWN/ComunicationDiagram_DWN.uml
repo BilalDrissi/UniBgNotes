@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Dx5ygN7nEe-buajYH-tWAw" name="ComunicationDiagram_DWN">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Dyg2gN7nEe-buajYH-tWAw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_Dx-D8N7nEe-buajYH-tWAw" name="ComunicationDiagram_DWN">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ia6jMN7nEe-buajYH-tWAw" name="" type="_Dx-D8N7nEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_GIHb8N7nEe-buajYH-tWAw" name="User" coveredBy="_KItjkN7nEe-buajYH-tWAw _Qy_DMd7nEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_Hj6EgN7nEe-buajYH-tWAw" name="Site" coveredBy="_KItjkd7nEe-buajYH-tWAw _Qy_DMt7nEe-buajYH-tWAw _TiXakN7nEe-buajYH-tWAw _bLyqEd7nEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_IThjkN7nEe-buajYH-tWAw" name="Database" coveredBy="_TiXakd7nEe-buajYH-tWAw _bLyqEt7nEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_ia58IN7nEe-buajYH-tWAw" name="" represents="_ia6jMN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_KItjkN7nEe-buajYH-tWAw" name="Message4SendEvent" covered="_GIHb8N7nEe-buajYH-tWAw" message="_KIs8gN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_KItjkd7nEe-buajYH-tWAw" name="Message4ReceiveEvent" covered="_Hj6EgN7nEe-buajYH-tWAw" message="_KIs8gN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Qy_DMd7nEe-buajYH-tWAw" name="Message8SendEvent" covered="_GIHb8N7nEe-buajYH-tWAw" message="_Qy_DMN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Qy_DMt7nEe-buajYH-tWAw" name="Message8ReceiveEvent" covered="_Hj6EgN7nEe-buajYH-tWAw" message="_Qy_DMN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_TiXakN7nEe-buajYH-tWAw" name="Message11SendEvent" covered="_Hj6EgN7nEe-buajYH-tWAw" message="_TiWzgN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_TiXakd7nEe-buajYH-tWAw" name="Message11ReceiveEvent" covered="_IThjkN7nEe-buajYH-tWAw" message="_TiWzgN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bLyqEd7nEe-buajYH-tWAw" name="Message15SendEvent" covered="_Hj6EgN7nEe-buajYH-tWAw" message="_bLyqEN7nEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bLyqEt7nEe-buajYH-tWAw" name="Message15ReceiveEvent" covered="_IThjkN7nEe-buajYH-tWAw" message="_bLyqEN7nEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_KIs8gN7nEe-buajYH-tWAw" name="1:insCourse()" messageSort="asynchCall" receiveEvent="_KItjkd7nEe-buajYH-tWAw" sendEvent="_KItjkN7nEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_NyNZ0N7nEe-buajYH-tWAw" name="2:inscriteria()"/>
+    <message xmi:type="uml:Message" xmi:id="_Qy_DMN7nEe-buajYH-tWAw" name="3:selectNotes()" messageSort="asynchCall" receiveEvent="_Qy_DMt7nEe-buajYH-tWAw" sendEvent="_Qy_DMd7nEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_TiWzgN7nEe-buajYH-tWAw" name="1.1:findNotes()" messageSort="asynchCall" receiveEvent="_TiXakd7nEe-buajYH-tWAw" sendEvent="_TiXakN7nEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_XCJUIN7nEe-buajYH-tWAw" name="2.1:applyCrit()"/>
+    <message xmi:type="uml:Message" xmi:id="_bLyqEN7nEe-buajYH-tWAw" name="3.1:download()" messageSort="asynchCall" receiveEvent="_bLyqEt7nEe-buajYH-tWAw" sendEvent="_bLyqEd7nEe-buajYH-tWAw"/>
+  </packagedElement>
+</uml:Model>

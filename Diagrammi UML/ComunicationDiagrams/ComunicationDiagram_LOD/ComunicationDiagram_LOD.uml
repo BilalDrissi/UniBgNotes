@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Y_cjwN7mEe-buajYH-tWAw" name="ComunicationDiagram_LOD">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_Y_wFwN7mEe-buajYH-tWAw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_Y_g1MN7mEe-buajYH-tWAw" name="ComunicationDiagram_LOD">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_3gQasd7mEe-buajYH-tWAw" name="" type="_Y_g1MN7mEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_bv0ZoN7mEe-buajYH-tWAw" name="User" coveredBy="_eyZZ0d7mEe-buajYH-tWAw _vNWJUt7mEe-buajYH-tWAw _08ZW0N7mEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_cj7XIN7mEe-buajYH-tWAw" name="Site" coveredBy="_eyZZ0t7mEe-buajYH-tWAw _r5ek0N7mEe-buajYH-tWAw _vNWJUd7mEe-buajYH-tWAw _08Yvwd7mEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_dG7WgN7mEe-buajYH-tWAw" name="Database" coveredBy="_r5ek0d7mEe-buajYH-tWAw"/>
+    <lifeline xmi:type="uml:Lifeline" xmi:id="_3gQasN7mEe-buajYH-tWAw" name="" represents="_3gQasd7mEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_eyZZ0d7mEe-buajYH-tWAw" name="Message4SendEvent" covered="_bv0ZoN7mEe-buajYH-tWAw" message="_eyZZ0N7mEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_eyZZ0t7mEe-buajYH-tWAw" name="Message4ReceiveEvent" covered="_cj7XIN7mEe-buajYH-tWAw" message="_eyZZ0N7mEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r5ek0N7mEe-buajYH-tWAw" name="Message8SendEvent" covered="_cj7XIN7mEe-buajYH-tWAw" message="_r5d9wN7mEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_r5ek0d7mEe-buajYH-tWAw" name="Message8ReceiveEvent" covered="_dG7WgN7mEe-buajYH-tWAw" message="_r5d9wN7mEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_vNWJUd7mEe-buajYH-tWAw" name="Message11SendEvent" covered="_cj7XIN7mEe-buajYH-tWAw" message="_vNWJUN7mEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_vNWJUt7mEe-buajYH-tWAw" name="Message11ReceiveEvent" covered="_bv0ZoN7mEe-buajYH-tWAw" message="_vNWJUN7mEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_08Yvwd7mEe-buajYH-tWAw" name="Message14SendEvent" covered="_cj7XIN7mEe-buajYH-tWAw" message="_08YvwN7mEe-buajYH-tWAw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_08ZW0N7mEe-buajYH-tWAw" name="Message14ReceiveEvent" covered="_bv0ZoN7mEe-buajYH-tWAw" message="_08YvwN7mEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_eyZZ0N7mEe-buajYH-tWAw" name="1:loadNotes()" messageSort="asynchCall" receiveEvent="_eyZZ0t7mEe-buajYH-tWAw" sendEvent="_eyZZ0d7mEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_i2KxQN7mEe-buajYH-tWAw" name="2:N1"/>
+    <message xmi:type="uml:Message" xmi:id="_r5d9wN7mEe-buajYH-tWAw" name="3:insDb()" messageSort="asynchCall" receiveEvent="_r5ek0d7mEe-buajYH-tWAw" sendEvent="_r5ek0N7mEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_vNWJUN7mEe-buajYH-tWAw" name="3.1:confMsg()" messageSort="asynchCall" receiveEvent="_vNWJUt7mEe-buajYH-tWAw" sendEvent="_vNWJUd7mEe-buajYH-tWAw"/>
+    <message xmi:type="uml:Message" xmi:id="_08YvwN7mEe-buajYH-tWAw" name="4:error()" messageSort="asynchCall" receiveEvent="_08ZW0N7mEe-buajYH-tWAw" sendEvent="_08Yvwd7mEe-buajYH-tWAw"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_oB85p97mEe-buajYH-tWAw">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_oB85qN7mEe-buajYH-tWAw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
